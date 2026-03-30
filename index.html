@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POBYT POLSKA — легализация пребывания</title>
+    <meta
+      name="description"
+      content="Консультации и сопровождение по легализации пребывания в Польше: ВНЖ, ПМЖ, гражданство, апелляции, ускорение."
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/pobyt-polska-favicon.svg" />
+    <link rel="shortcut icon" href="./assets/pobyt-polska-favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./pobyt-quiz.css?v=3" />
+    <!-- URL для отправки заявок: таблица + Telegram (см. README). -->
+    <script>window.FORM_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycbxADieL_vl8Etj9w_d_HY6zwcmjZ3uU2oe8oxzhIVqXVEvVrF-2SQGJxyuehZKg7H7A/exec';</script>
+    <!-- URL скрипта отзывов: Развернуть → Новое развертывание → Веб-приложение → скопировать URL сюда. -->
+    <script>window.REVIEWS_API_URL = 'https://script.google.com/macros/s/AKfycbydu_nNLKYAbJ-VgzucnqHyfcObPWBz1my-iKJ6JwZmrVKgyJqW1AoDNmCPB0651wX_/exec';</script>
+  </head>
+  <body>
+    <div class="pageloader" data-page-loader>
+      <div class="pageloader__inner">
+        <div class="pageloader__logo">
+          <img src="./assets/pobyt-polska-favicon.svg" alt="POBYT POLSKA" />
+        </div>
+        <p class="pageloader__text">Pobyt Polska загружается…</p>
+      </div>
+    </div>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+
+    <header class="header" role="banner">
+      <div class="container header__row">
+        <a class="brand" href="#" aria-label="На главную">
+          <span class="brand__mark" aria-hidden="true">
+            <img class="brand__logo" src="./assets/pobyt-polska-favicon.svg" alt="" />
+          </span>
+          <span class="brand__text">POBYT POLSKA</span>
+        </a>
+
+        <nav class="nav" aria-label="Навигация">
+          <a href="#services">Услуги</a>
+          <a href="#process">Как работаем</a>
+          <a href="#faq">FAQ</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#contacts">Контакты</a>
+          <a href="#map">Как нас найти</a>
+        </nav>
+
+        <div class="header__cta">
+          <a class="chip" href="tel:+48733060361">+48 733 060 361</a>
+          <button class="btn btn--primary btn--attention" data-open-lead="header">
+            Бесплатная консультация
+          </button>
+        </div>
+
+        <button
+          class="burger"
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          data-burger
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile" id="mobileMenu" hidden>
+        <div class="container mobile__inner">
+          <a href="#services" data-mobile-link>Услуги</a>
+          <a href="#process" data-mobile-link>Как работаем</a>
+          <a href="#faq" data-mobile-link>FAQ</a>
+          <a href="#contacts" data-mobile-link>Контакты</a>
+          <a href="#map" data-mobile-link>Как нас найти</a>
+          <div class="mobile__actions">
+            <a class="btn btn--ghost" href="tel:+48733060361">Позвонить</a>
+            <button class="btn btn--primary btn--attention" data-open-lead="mobile">
+              Бесплатная консультация
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="badge">5 лет в Польше · 500+ клиентов · 98% успешных дел</p>
+            <h1 data-animated-text>Легализация в Польше — без стресса и лишних шагов</h1>
+            <p class="muted">
+              Берём на себя документы, анкеты и общение с воеводством. Вы занимаетесь жизнью — мы занимаемся вашим статусом. Работаем с любой ситуацией: первая карта, продление, отказ, семейная подача.
+            </p>
+
+            <div class="hero__actions">
+              <button class="btn btn--primary" data-open-lead="hero">
+                Получить консультацию
+              </button>
+              <a class="btn btn--ghost" href="#services">Посмотреть, чем можем помочь</a>
+            </div>
+
+            <div class="hero__stats" aria-label="Ключевые показатели">
+              <div class="stat">
+                <div class="stat__n">5+ лет</div>
+                <div class="stat__t">опыта</div>
+              </div>
+              <div class="stat">
+                <div class="stat__n">500+</div>
+                <div class="stat__t">клиентов</div>
+              </div>
+              <div class="stat">
+                <div class="stat__n">от 60 дней ·</div>
+                <div class="stat__t">зависит от воеводства</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__card" aria-label="Форма быстрой заявки">
+            <div class="card">
+              <h2 class="card__title">Разберём вашу ситуацию бесплатно</h2>
+              <p class="card__sub">
+                Оставьте имя и телефон — перезвоним и объясним, что делать именно в вашем случае. Без лишних слов и давления.
+              </p>
+
+              <form class="form" data-lead-form data-form-source="hero" autocomplete="on">
+                <input
+                  type="text"
+                  class="city-autofill-hook"
+                  data-city-autofill
+                  autocomplete="address-level2"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  title=""
+                />
+                <label class="field">
+                  <span>Имя</span>
+                  <input name="name" autocomplete="name" required placeholder="Ваше имя" />
+                </label>
+
+                <label class="field">
+                  <span>Телефон</span>
+                  <input
+                    type="tel"
+                    id="phone-hero"
+                    name="phone"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    autocapitalize="off"
+                    autocorrect="off"
+                    spellcheck="false"
+                    required
+                    placeholder="+48 ___ ___ ___"
+                  />
+                </label>
+
+                <label class="field">
+                  <span>Город</span>
+                  <div class="field-select">
+                    <select name="city" required aria-label="Город">
+                      <option value="" selected>Выберите город</option>
+                      <option value="Варшава">Варшава</option>
+                      <option value="Краков">Краков</option>
+                      <option value="Лодзь">Лодзь</option>
+                      <option value="Вроцлав">Вроцлав</option>
+                      <option value="Познань">Познань</option>
+                      <option value="Гданьск">Гданьск</option>
+                      <option value="Щецин">Щецин</option>
+                      <option value="Быдгощ">Быдгощ</option>
+                      <option value="Люблин">Люблин</option>
+                      <option value="Белосток">Белосток</option>
+                      <option value="Катовице">Катовице</option>
+                      <option value="Гдыня">Гдыня</option>
+                      <option value="Другое">Другое</option>
+                    </select>
+                  </div>
+                </label>
+
+                <label class="field">
+                  <span>Вопрос</span>
+                  <textarea
+                    name="message"
+                    rows="3"
+                    placeholder="Коротко опишите ситуацию: основание, сроки, воеводство…"
+                  ></textarea>
+                </label>
+
+                <button
+                  class="btn btn--primary btn--block"
+                  type="submit"
+                  data-submit-label="Хочу консультацию"
+                >
+                  Хочу консультацию
+                </button>
+                <p class="fineprint">
+                  Нажимая «Хочу консультацию», вы соглашаетесь на обработку персональных
+                  данных.
+                </p>
+                <p class="form__ok" role="status" aria-live="polite" hidden></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--quiz" id="quiz">
+        <div class="container">
+          <div class="ppq-wrap">
+            <div id="ppq-intro" class="ppq-anim ppq-intro-plank">
+              <h2 class="ppq-intro-title">Узнайте, можете ли вы легализоваться в Польше</h2>
+              <p class="ppq-intro-sub">6 коротких вопросов — получите вывод по вашей ситуации и поймёте, с чего начать.</p>
+              <button class="ppq-btn ppq-btn-primary" onclick="ppqStart()">Начать — это бесплатно</button>
+            </div>
+
+            <div id="ppq-body" style="display:none">
+              <div class="ppq-progress-row">
+                <div class="ppq-bar-outer"><div class="ppq-bar-inner" id="ppq-bar"></div></div>
+                <div class="ppq-progress-label" id="ppq-prog-lbl">1 из 6</div>
+              </div>
+              <div id="ppq-question" class="ppq-anim"></div>
+              <div class="ppq-nav">
+                <button class="ppq-btn ppq-btn-ghost" id="ppq-back" onclick="ppqBack()" style="visibility:hidden">← Назад</button>
+                <button class="ppq-btn ppq-btn-primary" id="ppq-next" onclick="ppqNext()" disabled>Далее →</button>
+              </div>
+            </div>
+
+            <div id="ppq-result" style="display:none"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services" data-crest-reveal>
+        <div class="container">
+          <div class="section__head">
+            <h2>С чем мы помогаем</h2>
+            <p class="muted">
+              Выберите свою ситуацию — объясним, что делать дальше
+            </p>
+          </div>
+
+          <div class="grid grid--3">
+            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+              <h3>ВНЖ / карта побыту</h3>
+              <p class="muted">
+                Первая карта или смена статуса — разберём основание, соберём документы и сопроводим до подачи.
+              </p>
+            </article>
+            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+              <h3>ПМЖ / резидент ЕС</h3>
+              <p class="muted">
+                Проверим стаж и доходы, найдём возможные проблемы до подачи и подготовим полный пакет.
+              </p>
+            </article>
+            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+              <h3>Апелляции и отказы</h3>
+              <p class="muted">
+                Получили отказ или wezwanie? Разберём причину и подготовим аргументированную жалобу.
+              </p>
+            </article>
+            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+              <h3>Ускорение выдачи</h3>
+              <p class="muted">
+                Ждёте больше полугода? Помогаем сдвинуть дело с места — запросы, письма, контроль статуса.
+              </p>
+            </article>
+            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+              <h3>JDG и компании</h3>
+              <p class="muted">
+                Легализация для IT-специалистов и предпринимателей с JDG — с учётом специфики самозанятых.
+              </p>
+            </article>
+            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+              <h3>Семейная подача</h3>
+              <p class="muted">
+                Сопровождаем всю семью: один процесс, один контакт, честная цена без скрытых доплат.
+              </p>
+            </article>
+          </div>
+
+          <div class="callout">
+            <div class="callout__text">
+              <strong>Не нашли свою ситуацию в списке?</strong>
+              <span class="muted">Напишите кратко, что у вас за кейс — подскажем, как мы можем помочь, и следующий шаг.</span>
+            </div>
+            <button class="btn btn--primary" data-open-lead="services">
+              Записаться
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="process">
+        <div class="container">
+          <div class="section__head">
+            <h2>Как это работает</h2>
+            <p class="muted">Никаких сюрпризов — вы всегда знаете, что происходит с вашим делом</p>
+          </div>
+
+          <ol class="steps">
+            <li class="step">
+              <div class="step__n">01</div>
+              <div class="step__c">
+                <h3>Заявка</h3>
+                <p class="muted">Оставьте контакт — мы позвоним, выслушаем ситуацию и зададим пару уточняющих вопросов.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step__n">02</div>
+              <div class="step__c">
+                <h3>Консультация</h3>
+                <p class="muted">Объясняем, что реально в вашей ситуации, какие документы нужны и сколько времени займёт процесс.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step__n">03</div>
+              <div class="step__c">
+                <h3>Подготовка</h3>
+                <p class="muted">Готовим анкеты, письма и переводы. Комплектуем пакет так, чтобы не было причин для отказа.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step__n">04</div>
+              <div class="step__c">
+                <h3>Сопровождение</h3>
+                <p class="muted">Следим за статусом дела, отвечаем на запросы воеводства и держим вас в курсе на каждом этапе.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section__head">
+            <h2>Часто задаваемые вопросы</h2>
+            <p class="muted">Краткие ответы по легализации пребывания в Польше</p>
+          </div>
+          <div class="faq" data-accordion>
+            <details class="qa">
+              <summary>Что такое вид на жительство в Польше?</summary>
+              <p class="qa__a">
+                Документ (решение воеводы и пластиковая карта), который удостоверяет личность иностранца и подтверждает разрешение на проживание более 3 месяцев. Даёт право без визы находиться в Польше и в странах Шенгена до 90 дней в каждом полугодии. Оформляется только на территории Польши.
+              </p>
+            </details>
+            <details class="qa">
+              <summary>Что такое временный вид на жительство (ВНЖ)?</summary>
+              <p class="qa__a">
+                Карта временного проживания (karta pobytu czasowego) — разрешает временно проживать в Польше (обычно выдаётся на 1–2 года). Нужны основания: работа, бизнес, учёба, брак и т.д. ВНЖ продлевается при сохранении оснований и является шагом к ПМЖ и гражданству.
+              </p>
+            </details>
+            <details class="qa">
+              <summary>Какие основания для получения ВНЖ?</summary>
+              <p class="qa__a">
+                Среди распространённых: трудоустройство (umowa o pracę, zlecenie и др.), ведение бизнеса, учёба в Польше, брак с гражданином Польши или с обладателем ВНЖ/ПМЖ, воссоединение семьи, особые случаи (спорт, наука, культура).
+              </p>
+            </details>
+            <details class="qa">
+              <summary>Что такое постоянный вид на жительство (ПМЖ)?</summary>
+              <p class="qa__a">
+                Разрешение на постоянное проживание без необходимости регулярно подтверждать основания. Часто получают после 5 лет непрерывного ВНЖ (срок учёбы засчитывается как половина). Возможен путь через польское происхождение. После 3 лет ПМЖ можно ходатайствовать о гражданстве.
+              </p>
+            </details>
+            <details class="qa">
+              <summary>Где и как оформляется вид на жительство?</summary>
+              <p class="qa__a">
+                В отделе по делам иностранцев воеводского управления по месту проживания. Документы заполняются и подаются на польском языке; переводы — только через присяжного переводчика.
+              </p>
+            </details>
+            <details class="qa">
+              <summary>Как долго длится процедура?</summary>
+              <p class="qa__a">
+                Обычно от нескольких недель до нескольких месяцев в зависимости от типа разрешения и воеводства. Подать документы нужно до окончания срока действия текущей визы или пребывания.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="contacts">
+        <div class="container">
+          <div class="section__head">
+            <h2>Контакты</h2>
+            <p class="muted">Напишите или позвоните — подберём удобный формат</p>
+          </div>
+
+          <div class="contacts">
+            <div class="contacts__card card">
+              <h3>Связаться</h3>
+              <ul class="list">
+                <li><a href="tel:+48733060361">+48 733 060 361</a></li>
+                <li>
+                  <a href="https://t.me/Daria_Kaszczej" target="_blank" rel="noreferrer" aria-label="Telegram">
+                    @Daria_Kaszczej
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://api.whatsapp.com/send?phone=48733060361"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="WhatsApp"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+                <li>
+                  <span class="muted">
+                    Aleja Stanów Zjednoczonych 51, 413 04-028 Warszawa, Польша
+                  </span>
+                </li>
+              </ul>
+              <p class="muted fineprint">Для навигации используйте карту ниже</p>
+            </div>
+
+            <div class="contacts__card card">
+              <h3>Бесплатная консультация</h3>
+              <form class="form" data-lead-form data-form-source="contacts" autocomplete="on">
+                <input
+                  type="text"
+                  class="city-autofill-hook"
+                  data-city-autofill
+                  autocomplete="address-level2"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  title=""
+                />
+                <div class="grid grid--2">
+                  <label class="field">
+                    <span>Имя</span>
+                    <input name="name" autocomplete="name" required placeholder="Ваше имя" />
+                  </label>
+                  <label class="field">
+                    <span>Телефон</span>
+                    <input
+                      type="tel"
+                      id="phone-contacts"
+                      name="phone"
+                      autocomplete="tel"
+                      inputmode="tel"
+                      autocapitalize="off"
+                      autocorrect="off"
+                      spellcheck="false"
+                      required
+                      placeholder="+48 ___ ___ ___"
+                    />
+                  </label>
+                </div>
+                <label class="field">
+                  <span>Город</span>
+                  <div class="field-select">
+                    <select name="city" required aria-label="Город">
+                      <option value="" selected>Выберите город</option>
+                      <option value="Варшава">Варшава</option>
+                      <option value="Краков">Краков</option>
+                      <option value="Лодзь">Лодзь</option>
+                      <option value="Вроцлав">Вроцлав</option>
+                      <option value="Познань">Познань</option>
+                      <option value="Гданьск">Гданьск</option>
+                      <option value="Щецин">Щецин</option>
+                      <option value="Быдгощ">Быдгощ</option>
+                      <option value="Люблин">Люблин</option>
+                      <option value="Белосток">Белосток</option>
+                      <option value="Катовице">Катовице</option>
+                      <option value="Гдыня">Гдыня</option>
+                      <option value="Другое">Другое</option>
+                    </select>
+                  </div>
+                </label>
+                <label class="field">
+                  <span>Сообщение</span>
+                  <textarea
+                    name="message"
+                    rows="4"
+                    placeholder="Коротко опишите ситуацию: основание, сроки, воеводство…"
+                  ></textarea>
+                </label>
+                <button class="btn btn--primary btn--block" type="submit">
+                  Отправить
+                </button>
+                <p class="fineprint">
+                  Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
+                </p>
+                <p class="form__ok" role="status" aria-live="polite" hidden></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="reviews">
+        <div class="container">
+          <div class="section__head">
+            <h2>Отзывы</h2>
+            <p class="muted">Что о нас говорят клиенты</p>
+          </div>
+          <div class="reviews-carousel" aria-label="Карусель отзывов" data-reviews-container>
+            <div class="reviews-carousel__track" data-reviews-track data-reviews-loaded="0">
+              <div class="reviews-carousel__loading" data-reviews-loading>Загрузка отзывов…</div>
+            </div>
+          </div>
+          <p class="reviews-carousel__note muted">
+            <a href="https://www.google.com/maps/place/Pobyt+Polska+-+%D0%9A%D0%B0%D1%80%D1%82%D1%8B+%D0%BF%D0%BE%D0%B1%D1%8B%D1%82%D1%83(%D0%92%D0%9D%D0%96,+%D0%9F%D0%9C%D0%96,+%D0%9A%D0%B0%D1%80%D1%82%D0%B0+%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B0),+%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D1%82%D0%B2%D0%BE,+%D0%97%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2/@52.2373264,21.0770324,16z/data=!4m16!1m9!3m8!1s0x471ecd52546261af:0x9dc7cc211ad4e034!2zUG9ieXQgUG9sc2thIC0g0JrQsNGA0YLRiyDQv9C-0LHRi9GC0YMo0JLQndCWLCDQn9Cc0JYsINCa0LDRgNGC0LAg0YDQtdC30LjQtNC10L3RgtCwKSwg0JPRgNCw0LbQtNCw0L3RgdGC0LLQviwg0JfQsNC80LXQvdCwINC_0YDQsNCy!8m2!3d52.2373284!4d21.0790912!9m1!1b1!16s%2Fg%2F11vyt163rf!3m5!1s0x471ecd52546261af:0x9dc7cc211ad4e034!8m2!3d52.2373284!4d21.0790912!16s%2Fg%2F11vyt163rf?hl=ru-RU&entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" class="reviews-carousel__note-link">Больше отзывов</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="map">
+        <div class="container">
+          <div class="section__head">
+            <h2>Как нас найти</h2>
+            <p class="muted">Мы отмечены на карте гугл</p>
+          </div>
+          <div class="map" data-map-wrapper>
+            <div class="map__loader" data-map-loader aria-hidden="true">
+              <div class="map__logo">
+                <img src="./assets/pobyt-polska-favicon.svg" alt="" />
+              </div>
+              <p class="map__text">Загружаем карту Pobyt Polska…</p>
+            </div>
+            <iframe
+              title="POBYT POLSKA на карте Google"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4886.666938073273!2d21.0770324!3d52.2373264!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecd52546261af%3A0x9dc7cc211ad4e034!2zUG9ieXQgUG9sc2thIC0g0JrQsNGA0YLRiyDQv9C-0LHRi9GC0YMo0JLQndCWLCDQn9Cc0JYsINCa0LDRgNGC0LAg0YDQtdC30LjQtNC10L3RgtCwKSwg0JPRgNCw0LbQtNCw0L3RgdGC0LLQviwg0JfQsNC80LXQvdCwINC_0YDQsNCy!5e0!3m2!1sru!2spl!4v1773672805139!5m2!1sru!2spl"
+              allowfullscreen
+              data-map-iframe
+            ></iframe>
+            <a
+              class="map__overlay-link"
+              href="https://www.google.com/maps/place/Pobyt+Polska+-+%D0%9A%D0%B0%D1%80%D1%82%D1%8B+%D0%BF%D0%BE%D0%B1%D1%8B%D1%82%D1%83(%D0%92%D0%9D%D0%96,+%D0%9F%D0%9C%D0%96,+%D0%9A%D0%B0%D1%80%D1%82%D0%B0+%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B0),+%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D1%82%D0%B2%D0%BE,+%D0%97%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2/@52.2373264,21.0770324,16z/data=!4m16!1m9!3m8!1s0x471ecd52546261af:0x9dc7cc211ad4e034!2zUG9ieXQgUG9sc2thIC0g0JrQsNGA0YLRiyDQv9C-0LHRi9GC0YMo0JLQndCWLCDQn9Cc0JYsINCa0LDRgNGC0LAg0YDQtdC30LjQtNC10L3RgtCwKSwg0JPRgNCw0LbQtNCw0L3RgdGC0LLQviwg0JfQsNC80LXQvdCwINC_0YDQsNCy!8m2!3d52.2373284!4d21.0790912!9m1!1b1!16s%2Fg%2F11vyt163rf!3m5!1s0x471ecd52546261af:0x9dc7cc211ad4e034!8m2!3d52.2373284!4d21.0790912!16s%2Fg%2F11vyt163rf?hl=ru-RU&entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Открыть карточку Pobyt Polska в Google Maps"
+            ></a>
+          </div>
+          <div class="map__actions">
+            <a
+              class="btn btn--primary"
+              href="https://www.google.com/maps/place/Pobyt+Polska+-+%D0%9A%D0%B0%D1%80%D1%82%D1%8B+%D0%BF%D0%BE%D0%B1%D1%8B%D1%82%D1%83(%D0%92%D0%9D%D0%96,+%D0%9F%D0%9C%D0%96,+%D0%9A%D0%B0%D1%80%D1%82%D0%B0+%D1%80%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B0),+%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D1%82%D0%B2%D0%BE,+%D0%97%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2/@52.2373264,21.0770324,16z/data=!4m16!1m9!3m8!1s0x471ecd52546261af:0x9dc7cc211ad4e034!2zUG9ieXQgUG9sc2thIC0g0JrQsNGA0YLRiyDQv9C-0LHRi9GC0YMo0JLQndCWLCDQn9Cc0JYsINCa0LDRgNGC0LAg0YDQtdC30LjQtNC10L3RgtCwKSwg0JPRgNCw0LbQtNCw0L3RgdGC0LLQviwg0JfQsNC80LXQvdCwINC_0YDQsNCy!8m2!3d52.2373284!4d21.0790912!9m1!1b1!16s%2Fg%2F11vyt163rf!3m5!1s0x471ecd52546261af:0x9dc7cc211ad4e034!8m2!3d52.2373284!4d21.0790912!16s%2Fg%2F11vyt163rf?hl=ru-RU&entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Pobyt Polska в Google Maps
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__row">
+        <div>
+          <div class="brand brand--footer">
+            <span class="brand__mark" aria-hidden="true">
+              <img class="brand__logo" src="./assets/pobyt-polska-favicon.svg" alt="" />
+            </span>
+            <span class="brand__text">POBYT POLSKA</span>
+          </div>
+          <p class="muted fineprint">
+            Информация на сайте не является юридической консультацией и носит справочный характер
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <a href="#services">Услуги</a>
+          <a href="#faq">FAQ</a>
+          <button class="linklike" type="button" data-open-policy>Политика данных</button>
+        </div>
+      </div>
+      <div class="container footer__bottom fineprint muted">
+        <span>© <span data-year></span> POBYT POLSKA. Все права защищены.</span>
+      </div>
+    </footer>
+
+    <div class="floaters" aria-label="Быстрые контакты">
+      <a
+        class="floater floater--tg"
+        href="https://t.me/Daria_Kaszczej"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Написать в Telegram"
+        title="Telegram"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z"
+          />
+        </svg>
+      </a>
+      <a
+        class="floater floater--wa"
+        href="https://api.whatsapp.com/send?phone=48733060361"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Написать в WhatsApp"
+        title="WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          />
+          <path
+            d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <dialog class="modal" data-modal>
+      <div class="modal__card" data-modal-card>
+        <div class="modal__head">
+          <h2>Бесплатная консультация</h2>
+          <button class="iconbtn" type="button" data-close-modal aria-label="Закрыть">✕</button>
+        </div>
+        <p class="muted">
+          Заполните форму — мы свяжемся и подскажем дальнейшие шаги
+        </p>
+
+        <form class="form" data-lead-form autocomplete="on">
+          <input type="hidden" name="source" value="" />
+          <input
+            type="text"
+            class="city-autofill-hook"
+            data-city-autofill
+            autocomplete="address-level2"
+            tabindex="-1"
+            aria-hidden="true"
+            title=""
+          />
+          <label class="field">
+            <span>Имя</span>
+            <input name="name" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span>Телефон</span>
+            <input
+              type="tel"
+              id="phone-modal"
+              name="phone"
+              autocomplete="tel"
+              inputmode="tel"
+              autocapitalize="off"
+              autocorrect="off"
+              spellcheck="false"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Город</span>
+            <div class="field-select">
+              <select name="city" required aria-label="Город">
+                <option value="" selected>Выберите город</option>
+                <option value="Варшава">Варшава</option>
+                <option value="Краков">Краков</option>
+                <option value="Лодзь">Лодзь</option>
+                <option value="Вроцлав">Вроцлав</option>
+                <option value="Познань">Познань</option>
+                <option value="Гданьск">Гданьск</option>
+                <option value="Щецин">Щецин</option>
+                <option value="Быдгощ">Быдгощ</option>
+                <option value="Люблин">Люблин</option>
+                <option value="Белосток">Белосток</option>
+                <option value="Катовице">Катовице</option>
+                <option value="Гдыня">Гдыня</option>
+                <option value="Другое">Другое</option>
+              </select>
+            </div>
+          </label>
+          <label class="field">
+            <span>Вопрос</span>
+            <textarea name="message" rows="4"></textarea>
+          </label>
+          <button class="btn btn--primary btn--block" type="submit">
+            Отправить
+          </button>
+          <p class="fineprint">
+            Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
+          </p>
+          <p class="form__ok" role="status" aria-live="polite" hidden></p>
+        </form>
+      </div>
+    </dialog>
+
+    <dialog class="modal" data-policy>
+      <form class="modal__card" method="dialog">
+        <div class="modal__head">
+          <h2>Обработка персональных данных</h2>
+          <button class="iconbtn" value="cancel" aria-label="Закрыть">✕</button>
+        </div>
+        <div class="muted policy">
+          <p>
+            Мы обрабатываем данные, которые вы отправляете через формы (имя, телефон, город, сообщение),
+            чтобы связаться с вами по вашему запросу и предоставить информацию об услугах.
+          </p>
+          <p>
+            Данные не публикуются и не продаются. Срок хранения и юридические основания зависят от
+            вашего договора/запроса. Текст политики адаптируйте под вашу компанию.
+          </p>
+        </div>
+        <menu class="modal__menu">
+          <button class="btn btn--primary" value="ok">Понятно</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__row">
+        <p class="cookie__text muted">
+          Этот сайт использует cookies для улучшения работы и аналитики.
+        </p>
+        <div class="cookie__actions">
+          <button class="btn btn--ghost" type="button" data-cookie-settings>
+            Настройки
+          </button>
+          <button class="btn btn--primary" type="button" data-cookie-accept>
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- без атрибута hidden: часть браузеров хуже обрабатывает target формы в скрытом iframe -->
+    <iframe
+      id="form-submit-iframe"
+      name="form-submit-iframe"
+      title="Отправка формы"
+      style="position:absolute;width:0;height:0;border:0;clip:rect(0,0,0,0);visibility:hidden"
+      aria-hidden="true"
+    ></iframe>
+    <script type="module" src="./main.js"></script>
+    <script src="./pobyt-quiz-embed.js" defer></script>
+  </body>
+</html>

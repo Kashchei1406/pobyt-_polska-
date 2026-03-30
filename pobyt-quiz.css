@@ -1,0 +1,439 @@
+/* Квиз: акценты — фирменный красный. Локальная переменная на #quiz, чтобы не зависеть от каскада :root. */
+
+#quiz {
+  --ppq-brand: #e41b4a;
+}
+
+#quiz .ppq-wrap {
+  width: 100%;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Красная плашка — только экран «Начать» */
+#quiz .ppq-intro-plank {
+  background: var(--ppq-brand);
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+#quiz .ppq-intro-plank .ppq-intro-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+#quiz .ppq-intro-plank .ppq-intro-sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+#quiz .ppq-intro-plank .ppq-btn-primary {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--ppq-brand);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#quiz .ppq-intro-plank .ppq-btn-primary:hover {
+  background: #fff;
+  color: var(--ppq-brand);
+}
+
+/* Белая карточка: вопросы и навигация */
+#quiz #ppq-body {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+#quiz #ppq-result {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+#quiz #ppq-result > .ppq-anim {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+#quiz .ppq-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+#quiz .ppq-bar-outer {
+  flex: 1;
+  height: 4px;
+  background: #e8e8e5;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#quiz .ppq-bar-inner {
+  height: 4px;
+  background: var(--ppq-brand);
+  border-radius: 2px;
+  transition: width 0.35s ease;
+  width: 0%;
+}
+
+#quiz .ppq-progress-label {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+}
+
+#quiz .ppq-q-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin: 0 0 8px;
+}
+
+#quiz .ppq-q-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin: 0 0 6px;
+}
+
+#quiz .ppq-q-hint {
+  font-size: 13px;
+  color: #999;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+#quiz .ppq-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#quiz .ppq-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 16px;
+  border: 1.5px solid #e0e0dc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: #fafaf9;
+  user-select: none;
+}
+
+#quiz .ppq-opt:hover {
+  border-color: rgba(228, 27, 74, 0.35);
+  background: rgba(228, 27, 74, 0.05);
+}
+
+#quiz .ppq-opt.selected {
+  border-color: var(--ppq-brand);
+  background: rgba(228, 27, 74, 0.08);
+}
+
+#quiz .ppq-opt-mark {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #ccc;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+#quiz .ppq-opt.selected .ppq-opt-mark {
+  background: var(--ppq-brand);
+  border-color: var(--ppq-brand);
+}
+
+#quiz .ppq-opt.selected .ppq-opt-mark::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+#quiz .ppq-opt-label {
+  font-size: 14px;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+#quiz .ppq-opt-hint {
+  font-size: 12px;
+  color: #999;
+  margin-top: 2px;
+}
+
+#quiz .ppq-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+#quiz .ppq-btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+#quiz #ppq-body .ppq-btn-primary {
+  background: var(--ppq-brand);
+  color: #fff;
+}
+
+#quiz #ppq-body .ppq-btn-primary:hover {
+  opacity: 0.88;
+}
+
+#quiz #ppq-body .ppq-btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#quiz #ppq-body .ppq-btn-ghost {
+  background: transparent;
+  color: #666;
+  border: 1.5px solid #ddd;
+}
+
+#quiz #ppq-body .ppq-btn-ghost:hover {
+  border-color: #aaa;
+  color: #333;
+}
+
+#quiz a.ppq-btn-primary {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* tel:/mailto: иначе часто окрашиваются в системный синий */
+#quiz a.ppq-btn-primary:link,
+#quiz a.ppq-btn-primary:visited {
+  color: #fff;
+}
+
+#quiz .ppq-btn-block {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 13px;
+  font-size: 15px;
+}
+
+/* Результат — как в оригинале */
+#quiz .ppq-result-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+#quiz .ppq-result-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+#quiz .ppq-result-body {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+#quiz .ppq-result-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+#quiz .ppq-result-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
+
+#quiz .ppq-result-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+#quiz .ppq-alts-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #777;
+  margin: 0 0 10px;
+}
+
+#quiz .ppq-divider {
+  height: 1px;
+  background: #ebebeb;
+  margin: 16px 0;
+}
+
+#quiz .ppq-cta-box {
+  background: rgba(228, 27, 74, 0.06);
+  border: 1px solid rgba(228, 27, 74, 0.22);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 4px;
+}
+
+#quiz .ppq-cta-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+#quiz .ppq-cta-sub {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+#quiz .ppq-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#quiz .ppq-cta-box .ppq-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--ppq-brand);
+  color: #fff;
+  border: none;
+}
+
+#quiz .ppq-cta-box .ppq-btn-primary:hover {
+  opacity: 0.88;
+}
+
+/* Клавиатура: вместо синего outline браузера */
+#quiz .ppq-opt:focus {
+  outline: none;
+}
+
+#quiz .ppq-opt:focus-visible {
+  outline: 2px solid var(--ppq-brand);
+  outline-offset: 2px;
+}
+
+#quiz .ppq-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(228, 27, 74, 0.35);
+}
+
+#quiz a.ppq-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(228, 27, 74, 0.35);
+}
+
+#quiz .ppq-restart:focus-visible {
+  outline: 2px solid var(--ppq-brand);
+  outline-offset: 2px;
+}
+
+#quiz .ppq-opt,
+#quiz .ppq-btn {
+  -webkit-tap-highlight-color: rgba(228, 27, 74, 0.12);
+}
+
+#quiz .ppq-restart {
+  font-family: inherit;
+  font-size: 13px;
+  color: #aaa;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+#quiz .ppq-restart:hover {
+  color: #666;
+}
+
+#quiz .ppq-anim {
+  animation: ppqFade 0.22s ease;
+}
+
+@keyframes ppqFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  #quiz .ppq-intro-plank,
+  #quiz #ppq-body,
+  #quiz #ppq-result {
+    padding: 24px 18px;
+  }
+
+  #quiz .ppq-intro-plank .ppq-intro-title,
+  #quiz .ppq-result-title {
+    font-size: 18px;
+  }
+
+  #quiz .ppq-q-text {
+    font-size: 16px;
+  }
+}
