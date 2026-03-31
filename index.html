@@ -244,41 +244,59 @@
           </div>
 
           <div class="grid grid--3">
-            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+            <article class="tile">
               <h3>ВНЖ / карта побыту</h3>
               <p class="muted">
                 Первая карта или смена статуса — разберём основание, соберём документы и сопроводим до подачи.
               </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('vnj')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
             </article>
-            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+            <article class="tile">
               <h3>ПМЖ / резидент ЕС</h3>
               <p class="muted">
                 Проверим стаж и доходы, найдём возможные проблемы до подачи и подготовим полный пакет.
               </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('pmj')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
             </article>
-            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+            <article class="tile">
               <h3>Апелляции и отказы</h3>
               <p class="muted">
                 Получили отказ или wezwanie? Разберём причину и подготовим аргументированную жалобу.
               </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('appeal')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
             </article>
-            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+            <article class="tile">
               <h3>Ускорение выдачи</h3>
               <p class="muted">
                 Ждёте больше полугода? Помогаем сдвинуть дело с места — запросы, письма, контроль статуса.
               </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('speed')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
             </article>
-            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+            <article class="tile">
               <h3>JDG и компании</h3>
               <p class="muted">
                 Легализация для IT-специалистов и предпринимателей с JDG — с учётом специфики самозанятых.
               </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('jdg')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
             </article>
-            <article class="tile tile--clickable" tabindex="0" role="button" data-service-tile>
+            <article class="tile">
               <h3>Семейная подача</h3>
               <p class="muted">
                 Сопровождаем всю семью: один процесс, один контакт, честная цена без скрытых доплат.
               </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('family')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
             </article>
           </div>
 
@@ -319,12 +337,22 @@
             <li class="step">
               <div class="step__n">03</div>
               <div class="step__c">
+                <h3>Договор</h3>
+                <p class="muted">
+                  Заключаем официальный договор — фиксируем объём работ, стоимость и сроки. Всё прозрачно и письменно. Апелляции и
+                  ускорение уже включены в стоимость — если в процессе потребуется дополнительная работа, доплачивать не придётся.
+                </p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step__n">04</div>
+              <div class="step__c">
                 <h3>Подготовка</h3>
                 <p class="muted">Готовим анкеты, письма и переводы. Комплектуем пакет так, чтобы не было причин для отказа.</p>
               </div>
             </li>
             <li class="step">
-              <div class="step__n">04</div>
+              <div class="step__n">05</div>
               <div class="step__c">
                 <h3>Сопровождение</h3>
                 <p class="muted">Следим за статусом дела, отвечаем на запросы воеводства и держим вас в курсе на каждом этапе.</p>
@@ -500,7 +528,35 @@
           </div>
           <div class="reviews-carousel" aria-label="Карусель отзывов" data-reviews-container>
             <div class="reviews-carousel__track" data-reviews-track data-reviews-loaded="0">
-              <div class="reviews-carousel__loading" data-reviews-loading>Загрузка отзывов…</div>
+              <div class="reviews-carousel__loading" data-reviews-loading>
+                <article class="review-card review-card--skeleton">
+                  <div class="review-card__stars skeleton-bar"></div>
+                  <div class="review-card__text-wrap">
+                    <div class="skeleton-line skeleton-line--wide"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-line--short"></div>
+                  </div>
+                  <div class="skeleton-line skeleton-line--author"></div>
+                </article>
+                <article class="review-card review-card--skeleton">
+                  <div class="review-card__stars skeleton-bar"></div>
+                  <div class="review-card__text-wrap">
+                    <div class="skeleton-line skeleton-line--wide"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-line--short"></div>
+                  </div>
+                  <div class="skeleton-line skeleton-line--author"></div>
+                </article>
+                <article class="review-card review-card--skeleton">
+                  <div class="review-card__stars skeleton-bar"></div>
+                  <div class="review-card__text-wrap">
+                    <div class="skeleton-line skeleton-line--wide"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line skeleton-line--short"></div>
+                  </div>
+                  <div class="skeleton-line skeleton-line--author"></div>
+                </article>
+              </div>
             </div>
           </div>
           <p class="reviews-carousel__note muted">
@@ -612,6 +668,15 @@
           />
         </svg>
       </a>
+    </div>
+
+    <div class="svc-overlay" id="svc-overlay" onclick="svcHandleOverlay(event)">
+      <div class="svc-modal" id="svc-modal">
+        <button type="button" class="svc-modal__close" onclick="svcCloseModal()" aria-label="Закрыть">
+          ✕
+        </button>
+        <div id="svc-modal-content"></div>
+      </div>
     </div>
 
     <dialog class="modal" data-modal>
@@ -737,5 +802,6 @@
     ></iframe>
     <script type="module" src="./main.js"></script>
     <script src="./pobyt-quiz-embed.js" defer></script>
+    <script src="./services-modal.js" defer></script>
   </body>
 </html>

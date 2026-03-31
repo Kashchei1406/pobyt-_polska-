@@ -82,30 +82,27 @@ function initModals() {
     scheduleCityAutofillSync(form);
   }
 
-  /* Делегирование: кнопка CTA в результате квиза вставляется позже через innerHTML */
+  /* Делегирование: кнопки с data-open-lead (квиз, шапка и т.д.); data-lead-message — префилл поля «Вопрос» */
   document.addEventListener('click', (e) => {
     const btn = e.target instanceof Element ? e.target.closest('[data-open-lead]') : null;
     if (!btn) return;
+    if (typeof window.svcCloseModal === 'function') {
+      const ov = document.getElementById('svc-overlay');
+      if (ov && ov.classList.contains('open')) window.svcCloseModal();
+    }
     const source = btn.getAttribute('data-open-lead') || 'modal';
-    openLeadModal(source, '');
+    const msgAttr = btn.getAttribute('data-lead-message');
+    openLeadModal(source, msgAttr !== null ? msgAttr : '');
   });
 
-  $$('[data-service-tile]').forEach((tile) => {
-    const onTileClick = () => {
-      const titleEl = tile.querySelector('h3');
-      const descEl = tile.querySelector('p');
-      const title = titleEl ? titleEl.textContent.trim() : '';
-      const desc = descEl ? descEl.textContent.trim() : '';
-      const messageText = title && desc ? 'Услуга: ' + title + '\n\n' + desc : title || desc || '';
-      openLeadModal('service', messageText);
-    };
-    tile.addEventListener('click', onTileClick);
-    tile.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        onTileClick();
-      }
-    });
+  document.addEventListener('pobyt:open-lead', (e) => {
+    const d = e.detail;
+    if (!d || typeof d !== 'object') return;
+    if (typeof window.svcCloseModal === 'function') {
+      const ov = document.getElementById('svc-overlay');
+      if (ov && ov.classList.contains('open')) window.svcCloseModal();
+    }
+    openLeadModal(d.source || 'modal', d.message != null ? String(d.message) : '');
   });
 
   const policyBtn = $('[data-open-policy]');
@@ -126,7 +123,7 @@ function initModals() {
     if (!inCard) modal.close();
   });
 
-  // После close() фокус возвращается на карточку услуги — убираем, чтобы не оставалась красная рамка
+  /* После close() фокус может вернуться на кнопку в скрытом оверлее услуг — снимаем фокус */
   modal.addEventListener('close', () => {
     const root = document.documentElement;
     root.classList.add('modal-just-closed');
@@ -134,8 +131,9 @@ function initModals() {
     const tryBlur = (triesLeft) => {
       requestAnimationFrame(() => {
         const el = document.activeElement;
-        const tile = el && el.closest ? el.closest('[data-service-tile]') : null;
-        if (tile) tile.blur();
+        if (el && typeof el.blur === 'function' && el.closest) {
+          if (el.closest('#svc-overlay') || el.closest('.services-card-btn')) el.blur();
+        }
         if (triesLeft > 0) {
           setTimeout(() => tryBlur(triesLeft - 1), 30);
         }
@@ -425,7 +423,6 @@ function initForms() {
       let message = (form.querySelector('textarea[name="message"]') || {}).value || '';
       const source = getFormSource(form);
 
-      let quizClearAfterOk = false;
       const quiz = getQuizPayloadForLeadForm();
       if (quiz && quiz.answers && String(quiz.answers).trim()) {
         const formatted = formatQuizAnswersForMessage(quiz);
@@ -435,7 +432,6 @@ function initForms() {
           : '\n\nКвиз (ответы):\n' + raw;
         if (quizBlock.trim()) {
           message = message.trim() ? message.trim() + quizBlock : quizBlock.trim();
-          quizClearAfterOk = true;
         }
       }
 
@@ -457,14 +453,7 @@ function initForms() {
             }
             if (!err) {
               form.reset();
-              if (quizClearAfterOk) {
-                try {
-                  localStorage.removeItem(QUIZ_STORAGE_KEY);
-                } catch (_) {}
-                if (typeof window.ppqClearQuizAfterLeadSent === 'function') {
-                  window.ppqClearQuizAfterLeadSent();
-                }
-              }
+              /* Квиз не сбрасываем: при повторной заявке без перезагрузки ответы снова подмешиваются в message */
             }
             if (submitBtn) {
               submitBtn.disabled = false;
@@ -478,14 +467,6 @@ function initForms() {
           ok.hidden = false;
         }
         form.reset();
-        if (quizClearAfterOk) {
-          try {
-            localStorage.removeItem(QUIZ_STORAGE_KEY);
-          } catch (_) {}
-          if (typeof window.ppqClearQuizAfterLeadSent === 'function') {
-            window.ppqClearQuizAfterLeadSent();
-          }
-        }
       }
     });
   });
