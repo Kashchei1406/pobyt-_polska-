@@ -7,7 +7,7 @@
  * 3. Узнайте chat_id: напишите боту любое сообщение, откройте в браузере:
  *    https://api.telegram.org/bot<BOT_TOKEN>/getUpdates — в ответе будет "chat":{"id":123456}
  * 4. Ниже замените BOT_TOKEN, CHAT_ID и SHEET_ID на свои значения.
- * 5. В таблице в первой строке задайте заголовки: Дата | Имя | Телефон | Город | Вопрос | Источник
+ * 5. В таблице в первой строке задайте заголовки: Дата | Имя | Телефон | Город | Вопрос | Источник | Связь
  * 6. Разверните скрипт: Развернуть → Новое развертывание → Тип: Веб-приложение,
  *    Выполнять от имени: меня, У кого доступ: все. Скопируйте URL развертывания.
  * 7. На сайте в index.html задайте: window.FORM_SUBMIT_URL = 'URL_РАЗВЕРТЫВАНИЯ';
@@ -51,6 +51,16 @@ function doGet(e) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
+function normalizeContactPref_(v) {
+  var s = String(v || '').trim().toLowerCase();
+  if (s === 'messenger') return 'messenger';
+  return 'phone';
+}
+
+function contactPrefLabel_(pref) {
+  return pref === 'messenger' ? 'Мессенджер' : 'Телефон';
+}
+
 function parseFormBody(contents) {
   var params = {};
   if (!contents || typeof contents !== 'string') return params;
@@ -67,6 +77,7 @@ function parseFormBody(contents) {
 function doPost(e) {
   try {
     var name = '', phone = '', city = '', message = '', source = 'site';
+    var contact_pref = 'phone';
 
     if (e.parameter && (e.parameter.name || e.parameter.phone)) {
       name = (e.parameter.name || '').trim();
@@ -74,6 +85,7 @@ function doPost(e) {
       city = (e.parameter.city || '').trim();
       message = (e.parameter.message || '').trim();
       source = (e.parameter.source || 'site').trim();
+      contact_pref = normalizeContactPref_(e.parameter.contact_pref);
     } else if (e.postData && e.postData.contents) {
       var raw = e.postData.contents;
       if (raw.indexOf('=') !== -1 && raw.indexOf('{') !== 0) {
@@ -83,6 +95,7 @@ function doPost(e) {
         city = (p.city || '').trim();
         message = (p.message || '').trim();
         source = (p.source || 'site').trim();
+        contact_pref = normalizeContactPref_(p.contact_pref);
       } else {
         var data = JSON.parse(raw);
         name = (data.name || '').trim();
@@ -90,6 +103,7 @@ function doPost(e) {
         city = (data.city || '').trim();
         message = (data.message || '').trim();
         source = (data.source || 'site').trim();
+        contact_pref = normalizeContactPref_(data.contact_pref);
       }
     }
 
@@ -109,7 +123,7 @@ function doPost(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    var row = [new Date(), name, phone, city, message, source];
+    var row = [new Date(), name, phone, city, message, source, contactPrefLabel_(contact_pref)];
     var spreadsheet = SpreadsheetApp.openById(SHEET_ID);
     var sheet = spreadsheet.getSheetByName(SHEET_NAME);
     if (!sheet) {
@@ -126,6 +140,7 @@ function doPost(e) {
         '',
         '👤 Имя: ' + name,
         '📞 Телефон: ' + phone,
+        '📱 Связь: ' + contactPrefLabel_(contact_pref),
         '🏙 Город: ' + (city || '—'),
         '💬 Вопрос: ' + (message || '—'),
         '📍 Источник: ' + source,

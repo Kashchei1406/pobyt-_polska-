@@ -366,7 +366,7 @@ function submitToGoogleWebApp(url, data, onDone) {
     form.acceptCharset = 'UTF-8';
     form.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;';
 
-    ['name', 'phone', 'city', 'message', 'source'].forEach((key) => {
+    ['name', 'phone', 'city', 'message', 'source', 'contact_pref'].forEach((key) => {
       const input = document.createElement('input');
       input.type = 'hidden';
       input.name = key;
@@ -387,7 +387,7 @@ function submitToGoogleWebApp(url, data, onDone) {
   }
 
   const params = new URLSearchParams();
-  ['name', 'phone', 'city', 'message', 'source'].forEach((key) => {
+  ['name', 'phone', 'city', 'message', 'source', 'contact_pref'].forEach((key) => {
     params.append(key, data[key] != null ? String(data[key]) : '');
   });
 
@@ -402,6 +402,19 @@ function submitToGoogleWebApp(url, data, onDone) {
     .catch((err) => {
       onDone(err instanceof Error ? err : new Error(String(err)));
     });
+}
+
+/** Снимает «залипший» фокус после клика мышью по радио (системная обводка); с клавиатуры не трогаем. */
+function initContactPrefRadios() {
+  $$('.field--contact-pref input[name="contact_pref"]').forEach((input) => {
+    input.addEventListener('change', () => {
+      requestAnimationFrame(() => {
+        if (document.activeElement === input && !input.matches(':focus-visible')) {
+          input.blur();
+        }
+      });
+    });
+  });
 }
 
 function initForms() {
@@ -422,6 +435,9 @@ function initForms() {
       const city = cityEl && cityEl.value ? cityEl.value.trim() : '';
       let message = (form.querySelector('textarea[name="message"]') || {}).value || '';
       const source = getFormSource(form);
+      const prefEl = form.querySelector('input[name="contact_pref"]:checked');
+      const contact_pref =
+        prefEl && prefEl.value === 'messenger' ? 'messenger' : 'phone';
 
       const quiz = getQuizPayloadForLeadForm();
       if (quiz && quiz.answers && String(quiz.answers).trim()) {
@@ -445,7 +461,14 @@ function initForms() {
         }
         submitToGoogleWebApp(
           submitUrl,
-          { name: name.trim(), phone: phone.trim(), city, message: message.trim(), source },
+          {
+            name: name.trim(),
+            phone: phone.trim(),
+            city,
+            message: message.trim(),
+            source,
+            contact_pref,
+          },
           (err) => {
             if (ok) {
               ok.textContent = err ? 'Ошибка отправки. Попробуйте позже.' : 'Готово! Мы получили заявку и скоро свяжемся.';
@@ -826,6 +849,7 @@ function initQuiz() {
           city: '',
           message: 'inc',
           source: 'quiz_count',
+          contact_pref: 'phone',
         },
         () => {},
       );
@@ -947,6 +971,7 @@ initCityAutofill();
 initCitySelectAppearance();
 initCrestRevealScroll();
 initForms();
+initContactPrefRadios();
 initCookies();
 initMapLoader();
 initPageLoader();

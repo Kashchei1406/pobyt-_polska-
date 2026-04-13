@@ -520,6 +520,32 @@ select {
   color: rgba(55, 65, 81, 0.9);
   font-weight: 600;
 }
+
+.field--contact-pref .contact-pref {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.contact-pref__opt {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(15, 23, 42, 0.88);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.contact-pref__opt:has(input:checked) {
+  border-color: rgba(228, 27, 74, 0.45);
+  background: rgba(228, 27, 74, 0.06);
+}
+
 /* Поля ввода: единая «коробка» */
 input,
 textarea {
@@ -537,6 +563,57 @@ textarea {
   -webkit-font-smoothing: antialiased;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   box-shadow: none;
+}
+
+/*
+ * Радио «способ связи»: круг рисуем на label::before — без системного синего (Chrome/Safari/iOS).
+ * Нативный input только для логики формы и клавиатуры (визуально скрыт).
+ */
+.field--contact-pref .contact-pref__opt::before {
+  content: '';
+  display: block;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid rgba(35, 31, 32, 0.22);
+  background: #fff;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.field--contact-pref .contact-pref__opt:hover::before {
+  border-color: rgba(228, 27, 74, 0.55);
+}
+.field--contact-pref .contact-pref__opt:has(input:checked)::before {
+  border-color: var(--brand);
+  background: var(--brand);
+  box-shadow: inset 0 0 0 5px #fff;
+}
+.field--contact-pref .contact-pref__opt:has(input:focus-visible)::before {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+.field--contact-pref .contact-pref__opt:has(input:checked:focus-visible)::before {
+  outline-color: var(--brand2);
+}
+.field--contact-pref .contact-pref__opt input[type='radio'] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  accent-color: transparent !important;
 }
 
 input::placeholder,
@@ -636,13 +713,13 @@ textarea {
   resize: vertical;
   min-height: 88px;
 }
-input:focus,
+input:focus:not([type='radio']),
 textarea:focus {
   border-color: rgba(228, 27, 74, 0.7);
   box-shadow: 0 0 0 4px rgba(228, 27, 74, 0.12);
 }
-input[aria-invalid="true"],
-textarea[aria-invalid="true"] {
+input[aria-invalid='true']:not([type='radio']),
+textarea[aria-invalid='true'] {
   border-color: rgba(255, 77, 109, 0.7);
   box-shadow: 0 0 0 4px rgba(255, 77, 109, 0.16);
 }
@@ -1675,6 +1752,19 @@ section#quiz a.ppq-btn-primary:visited {
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* Без «подъёма» и тени при наведении (остальные .tile на сайте не используются) */
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+#services .grid > .tile:hover {
+  transform: none;
+  box-shadow: none;
+}
+/* Рамка как в состоянии без наведения (общий .tile:hover иначе чуть усиливает контур) */
+section#services[data-crest-reveal]:not(.crest-on) .grid > .tile:hover {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+section#services[data-crest-reveal].crest-on .grid > .tile:hover {
+  border-color: rgba(15, 23, 42, 0.06);
 }
 
 #services .grid > .tile > p {

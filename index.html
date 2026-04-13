@@ -16,7 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=services-tile-hover" />
     <link rel="stylesheet" href="./pobyt-quiz.css?v=3" />
     <!-- URL для отправки заявок: таблица + Telegram (см. README). -->
     <script>window.FORM_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycbxADieL_vl8Etj9w_d_HY6zwcmjZ3uU2oe8oxzhIVqXVEvVrF-2SQGJxyuehZKg7H7A/exec';</script>
@@ -54,9 +54,15 @@
 
         <div class="header__cta">
           <a class="chip" href="tel:+48733060361">+48 733 060 361</a>
-          <button class="btn btn--primary btn--attention" data-open-lead="header">
-            Бесплатная консультация
-          </button>
+          <a
+            class="btn btn--primary btn--attention"
+            href="https://t.me/Daria_Kaszczej"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Написать в Telegram"
+          >
+            Написать
+          </a>
         </div>
 
         <button
@@ -80,9 +86,16 @@
           <a href="#map" data-mobile-link>Как нас найти</a>
           <div class="mobile__actions">
             <a class="btn btn--ghost" href="tel:+48733060361">Позвонить</a>
-            <button class="btn btn--primary btn--attention" data-open-lead="mobile">
-              Бесплатная консультация
-            </button>
+            <a
+              class="btn btn--primary btn--attention"
+              href="https://t.me/Daria_Kaszczej"
+              target="_blank"
+              rel="noreferrer"
+              data-mobile-link
+              aria-label="Написать в Telegram"
+            >
+              Написать
+            </a>
           </div>
         </div>
       </div>
@@ -92,10 +105,10 @@
       <section class="hero">
         <div class="container hero__grid">
           <div class="hero__copy">
-            <p class="badge">5 лет в Польше · 500+ клиентов · 98% успешных дел</p>
+            <p class="badge">5+ лет опыта · 500+ клиентов · 98% успешных дел</p>
             <h1 data-animated-text>Легализация в Польше — без стресса и лишних шагов</h1>
             <p class="muted">
-              Берём на себя документы, анкеты и общение с воеводством. Вы занимаетесь жизнью — мы занимаемся вашим статусом. Работаем с любой ситуацией: первая карта, продление, отказ, семейная подача.
+              Берём весь процесс в свои руки — от первой консультации до положительного решения. Вы занимаетесь жизнью — мы занимаемся вашим статусом. Работаем с любой ситуацией: первая карта, продление, отказ, семейная подача.
             </p>
 
             <div class="hero__actions">
@@ -158,6 +171,20 @@
                     placeholder="+48 ___ ___ ___"
                   />
                 </label>
+
+                <div class="field field--contact-pref">
+                  <span>Как с вами связаться?</span>
+                  <div class="contact-pref" role="radiogroup" aria-label="Как с вами связаться">
+                    <label class="contact-pref__opt">
+                      <input type="radio" name="contact_pref" value="phone" checked />
+                      <span>Телефон</span>
+                    </label>
+                    <label class="contact-pref__opt">
+                      <input type="radio" name="contact_pref" value="messenger" />
+                      <span>Мессенджер</span>
+                    </label>
+                  </div>
+                </div>
 
                 <label class="field">
                   <span>Город</span>
@@ -247,7 +274,7 @@
             <article class="tile">
               <h3>ВНЖ / карта побыту</h3>
               <p class="muted">
-                Первая карта или смена статуса — разберём основание, соберём документы и сопроводим до подачи.
+                Первая карта или продление статуса — разберём основание, соберём документы и сопроводим до результата.
               </p>
               <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('vnj')">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
@@ -263,9 +290,27 @@
               </button>
             </article>
             <article class="tile">
-              <h3>Апелляции и отказы</h3>
+              <h3>Семейная подача</h3>
               <p class="muted">
-                Получили отказ или wezwanie? Разберём причину и подготовим аргументированную жалобу.
+                Сопровождаем всю семью: общий процесс и честная цена без скрытых доплат.
+              </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('family')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
+            </article>
+            <article class="tile">
+              <h3>JDG и компании</h3>
+              <p class="muted">
+                Легализация для IT-специалистов и предпринимателей с JDG/Spółka — с учётом специфики бизнеса.
+              </p>
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('jdg')">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
+            </article>
+            <article class="tile">
+              <h3>Апелляция после отказа</h3>
+              <p class="muted">
+                Получили отказ? Разберём причину и подготовим аргументированную жалобу.
               </p>
               <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('appeal')">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
@@ -281,20 +326,20 @@
               </button>
             </article>
             <article class="tile">
-              <h3>JDG и компании</h3>
+              <h3>Карта поляка</h3>
               <p class="muted">
-                Легализация для IT-специалистов и предпринимателей с JDG — с учётом специфики самозанятых.
+                Есть польские корни — разберём документы, заполним внёсок и подготовим к экзамену.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('jdg')">
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('karta')">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
             <article class="tile">
-              <h3>Семейная подача</h3>
+              <h3>Старт в Польше</h3>
               <p class="muted">
-                Сопровождаем всю семью: один процесс, один контакт, честная цена без скрытых доплат.
+                Только приехали? Поможем оформить PESEL, прописку, открыть счёт и разобраться с польскими реалиями.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('family')">
+              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('start')">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
@@ -478,6 +523,21 @@
                     />
                   </label>
                 </div>
+
+                <div class="field field--contact-pref">
+                  <span>Как с вами связаться?</span>
+                  <div class="contact-pref" role="radiogroup" aria-label="Как с вами связаться">
+                    <label class="contact-pref__opt">
+                      <input type="radio" name="contact_pref" value="phone" checked />
+                      <span>Телефон</span>
+                    </label>
+                    <label class="contact-pref__opt">
+                      <input type="radio" name="contact_pref" value="messenger" />
+                      <span>Мессенджер</span>
+                    </label>
+                  </div>
+                </div>
+
                 <label class="field">
                   <span>Город</span>
                   <div class="field-select">
@@ -718,6 +778,21 @@
               required
             />
           </label>
+
+          <div class="field field--contact-pref">
+            <span>Как с вами связаться?</span>
+            <div class="contact-pref" role="radiogroup" aria-label="Как с вами связаться">
+              <label class="contact-pref__opt">
+                <input type="radio" name="contact_pref" value="phone" checked />
+                <span>Телефон</span>
+              </label>
+              <label class="contact-pref__opt">
+                <input type="radio" name="contact_pref" value="messenger" />
+                <span>Мессенджер</span>
+              </label>
+            </div>
+          </div>
+
           <label class="field">
             <span>Город</span>
             <div class="field-select">
@@ -801,7 +876,7 @@
       aria-hidden="true"
     ></iframe>
     <script type="module" src="./main.js"></script>
-    <script src="./pobyt-quiz-embed.js" defer></script>
-    <script src="./services-modal.js" defer></script>
+    <script src="./pobyt-quiz-embed.js?v=2" defer></script>
+    <script src="./services-modal.js?v=11" defer></script>
   </body>
 </html>
