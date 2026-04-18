@@ -16,7 +16,15 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=services-tile-hover" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=about-card-v15" />
     <link rel="stylesheet" href="./pobyt-quiz.css?v=3" />
     <!-- URL для отправки заявок: таблица + Telegram (см. README). -->
     <script>window.FORM_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycbxADieL_vl8Etj9w_d_HY6zwcmjZ3uU2oe8oxzhIVqXVEvVrF-2SQGJxyuehZKg7H7A/exec';</script>
@@ -457,42 +465,121 @@
       <section class="section section--alt" id="contacts">
         <div class="container">
           <div class="section__head">
-            <h2>Контакты</h2>
-            <p class="muted">Напишите или позвоните — подберём удобный формат</p>
+            <h2>О нас</h2>
+            <p class="muted">Знаем эту работу изнутри — и делаем её честно</p>
           </div>
 
           <div class="contacts">
-            <div class="contacts__card card">
-              <h3>Связаться</h3>
-              <ul class="list">
-                <li><a href="tel:+48733060361">+48 733 060 361</a></li>
+            <div class="contacts__card contacts__about card about-card">
+              <div class="about-photo-wrap about-photo-wrap--portrait">
+                <img
+                  class="about-photo"
+                  src="./assets/daria.jpg"
+                  alt="Дарья Кащей — основатель Pobyt Polska"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                />
+                <div class="about-photo-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" width="40" height="40" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2" opacity=".3" />
+                    <path
+                      d="M4 20c0-4 3.6-7 8-7s8 3 8 7"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      stroke-linecap="round"
+                      opacity=".3"
+                    />
+                  </svg>
+                  <span>фото появится здесь</span>
+                </div>
+              </div>
+
+              <h3 class="about-name">Дарья Кащей</h3>
+              <p class="muted about-role">Основатель Pobyt Polska · юрист</p>
+
+              <p class="about-bio">
+                Юридическое образование, специализация — миграционное право. 5 лет помогаю людям получать карту побыту. Работаю
+                честно: говорю что реально, а не то что хочется услышать.
+              </p>
+
+              <div class="about-tags">
+                <span class="about-tag about-tag--accent">Юридическое образование</span>
+                <span class="about-tag about-tag--accent">Миграционное право</span>
+                <span class="about-tag">Русский · Украинский · Английский</span>
+              </div>
+
+              <div class="about-stats">
+                <div class="about-stat">
+                  <span class="about-stat__n">98%</span>
+                  <span class="about-stat__t">успешных дел</span>
+                </div>
+                <div class="about-stat">
+                  <span class="about-stat__n">500+</span>
+                  <span class="about-stat__t">клиентов</span>
+                </div>
+                <div class="about-stat">
+                  <span class="about-stat__n">5 лет</span>
+                  <span class="about-stat__t">практики</span>
+                </div>
+              </div>
+
+              <ul class="list about-contacts">
                 <li>
-                  <a href="https://t.me/Daria_Kaszczej" target="_blank" rel="noreferrer" aria-label="Telegram">
-                    @Daria_Kaszczej
+                  <a class="about-contact about-contact--phone" href="tel:+48733060361">
+                    <span class="about-contact__icon" aria-hidden="true">📞</span>
+                    <span>+48 733 060 361</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="about-contact about-contact--tg" href="https://t.me/Daria_Kaszczej" target="_blank" rel="noreferrer">
+                    <span class="about-contact__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path
+                          d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z"
+                        />
+                      </svg>
+                    </span>
+                    <span>Telegram</span>
                   </a>
                 </li>
                 <li>
                   <a
+                    class="about-contact about-contact--wa"
                     href="https://api.whatsapp.com/send?phone=48733060361"
                     target="_blank"
                     rel="noreferrer"
-                    aria-label="WhatsApp"
                   >
-                    WhatsApp
+                    <span class="about-contact__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path
+                          d="M20.5 3.5A11 11 0 0 0 3.3 16.8L2 22l5.4-1.4A11 11 0 1 0 20.5 3.5Zm-8.9 17a9 9 0 0 1-4.6-1.3l-.3-.2-3.1.8.8-3-.2-.3a9 9 0 1 1 7.4 4Zm4.9-6.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-1 1.2-.3.2-.7.1a7.3 7.3 0 0 1-3.6-3.2c-.2-.4 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.7-.5-.6-.7-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.8s1.2 3.1 1.4 3.3c.2.2 2.3 3.6 5.7 5 .8.3 1.5.5 2 .6.8.2 1.6.2 2.2.1.7-.1 1.8-.8 2.1-1.6.2-.8.2-1.4.1-1.6 0-.2-.2-.3-.5-.5Z"
+                        />
+                      </svg>
+                    </span>
+                    <span>WhatsApp</span>
                   </a>
                 </li>
-                <li>
-                  <span class="muted">
-                    Aleja Stanów Zjednoczonych 51, 413 04-028 Warszawa, Польша
-                  </span>
-                </li>
               </ul>
-              <p class="muted fineprint">Для навигации используйте карту ниже</p>
             </div>
 
-            <div class="contacts__card card">
-              <h3>Бесплатная консультация</h3>
-              <form class="form" data-lead-form data-form-source="contacts" autocomplete="on">
+            <div class="contacts__side">
+              <div class="quote-block">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="quote-text">
+                  Разбираемся в вашей ситуации, собираем документы и ведём дело от первой консультации до получения карты.
+                </p>
+                <p class="quote-attr">— Дарья K.</p>
+              </div>
+              <div class="about-proof">
+                <ul class="about-proof__list">
+                  <li>Берёмся за сложные кейсы — отказы, wezwanie, просроченные документы</li>
+                  <li>Официальный договор с фиксированной ценой до начала работы</li>
+                  <li>Апелляции и ускорение включены — без доплат</li>
+                  <li>Работаем удалённо и в офисе в Варшаве</li>
+                </ul>
+              </div>
+              <div class="contacts__card contacts__form-card card">
+                <h3>Бесплатная консультация</h3>
+                <form class="form" data-lead-form data-form-source="contacts" autocomplete="on">
                 <input
                   type="text"
                   class="city-autofill-hook"
@@ -574,7 +661,8 @@
                   Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
                 </p>
                 <p class="form__ok" role="status" aria-live="polite" hidden></p>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
