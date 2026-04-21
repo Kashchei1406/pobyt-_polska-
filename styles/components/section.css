@@ -1,0 +1,33 @@
+.u-container,
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  box-sizing: border-box;
+}
+
+.section__head {
+  max-width: 70ch;
+  margin-bottom: var(--space-7);
+}
+
+.section__title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-weight: var(--fw-700);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  font-size: clamp(var(--fs-3xl), 4vw, var(--fs-hero));
+  color: var(--color-text);
+}
+
+.section__title em {
+  color: var(--brand2);
+  font-style: normal;
+}
+
+.section__subtitle {
+  margin: 0;
+  font-weight: var(--fw-500);
+}

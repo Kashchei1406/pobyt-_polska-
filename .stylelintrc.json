@@ -1,0 +1,39 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-declaration-strict-value"],
+  "rules": {
+    "declaration-no-important": true,
+    "scale-unlimited/declaration-strict-value": [
+      [
+        "/color/",
+        "fill",
+        "stroke",
+        "font-family",
+        "font-size",
+        "font-weight",
+        "line-height",
+        "letter-spacing",
+        "border-radius",
+        "box-shadow",
+        "text-shadow",
+        "transition",
+        "transition-duration",
+        "transition-timing-function"
+      ],
+      {
+        "ignoreValues": [
+          "inherit",
+          "transparent",
+          "currentColor",
+          "none",
+          "normal",
+          "0",
+          "initial",
+          "unset",
+          "revert"
+        ],
+        "disableFix": true
+      }
+    ]
+  }
+}

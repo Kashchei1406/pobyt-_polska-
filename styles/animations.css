@@ -1,0 +1,449 @@
+/* ============================================================
+   POBYT POLSKA — animations.css
+   ------------------------------------------------------------
+   Модуль анимаций. Подключать ПОСЛЕ 01-tokens.css и components/button.css,
+   чтобы классы-эффекты корректно накладывались на базовый .btn.
+   Все длительности/easing берутся из токенов. Uсе эффекты уважают
+   prefers-reduced-motion (блок внизу файла).
+
+   Как пользоваться:
+     <button class="btn btn--primary btn--lift btn--sheen">...</button>
+     <div class="card card--interactive">...</div>
+     <section data-reveal>...</section>
+
+   Требуемые токены (должны быть в 01-tokens.css):
+     --dur-1..4, --ease-out, --ease-in-out, --ease-spring,
+     --t-fast, --t-normal, --t-slow, --t-spring,
+     --pp-red-rgb, --pp-red, --pp-red-400, --pp-red-600,
+     --gray-900-rgb, --color-brand, --color-surface, --color-border,
+     --shadow-xs, --shadow-sm, --shadow-md, --shadow-lg, --ring-brand.
+   ============================================================ */
+
+/* ---------- @property для анимированной рамки ---------- */
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0turn;
+}
+
+/* ============================================================
+   1) LIFT — базовый hover для CTA
+   ============================================================ */
+.btn--lift {
+  transition:
+    transform var(--t-fast),
+    box-shadow var(--t-fast),
+    background var(--t-normal);
+}
+.btn--lift:hover  { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn--lift:active { transform: translateY(0);    box-shadow: var(--shadow-xs); }
+
+/* ============================================================
+   2) PRESS — тактильный отклик на клике
+   ============================================================ */
+.btn--press { transition: transform var(--dur-1) var(--ease-out); }
+.btn--press:active { transform: scale(0.96); }
+
+/* ============================================================
+   3) GLOW — мягкое брендовое кольцо
+   ============================================================ */
+.btn--glow { transition: box-shadow var(--t-slow), transform var(--t-fast); }
+.btn--glow:hover {
+  box-shadow: var(--shadow-md), var(--ring-brand);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   4) GRADIENT SHIFT — градиент «течёт» при hover
+   ============================================================ */
+.btn--gradient {
+  background: linear-gradient(135deg,
+    var(--pp-red) 0%,
+    var(--pp-red-600) 50%,
+    var(--pp-red-400) 100%
+  );
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  transition:
+    background-position var(--dur-4) var(--ease-in-out),
+    transform var(--t-fast),
+    box-shadow var(--t-normal);
+}
+.btn--gradient:hover {
+  background-position: 100% 50%;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================================
+   5) ARROW SLIDE — стрелка уезжает вправо
+   Требует <span class="arrow"> внутри кнопки
+   ============================================================ */
+.btn--arrow .arrow {
+  display: inline-block;
+  transition: transform var(--t-normal);
+}
+.btn--arrow:hover .arrow { transform: translateX(4px); }
+
+/* ============================================================
+   6) SHEEN — блик пробегает по поверхности
+   ============================================================ */
+.btn--sheen { position: relative; overflow: hidden; isolation: isolate; }
+.btn--sheen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255 255 255 / 0.28) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform var(--dur-4) var(--ease-out);
+  pointer-events: none;
+  z-index: 1;
+}
+.btn--sheen:hover::before { transform: translateX(120%); }
+
+/* ============================================================
+   7) RIPPLE — волна из точки клика (управляется JS)
+   JS добавляет <span class="ripple"> с --x/--y
+   ============================================================ */
+.btn--ripple { position: relative; overflow: hidden; isolation: isolate; }
+.btn--ripple .ripple {
+  position: absolute;
+  left: var(--x, 50%);
+  top:  var(--y, 50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.5);
+  transform: translate(-50%, -50%);
+  animation: pp-ripple var(--dur-4) var(--ease-out) forwards;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes pp-ripple {
+  to { width: 320px; height: 320px; opacity: 0; }
+}
+
+/* ============================================================
+   8) ATTENTION — деликатный idle-пульс для главного CTA
+   На лендинге использовать максимум на 1 кнопке одновременно
+   ============================================================ */
+.btn--attention {
+  animation: pp-attention 3.2s var(--ease-in-out) infinite;
+}
+@keyframes pp-attention {
+  0%, 70%, 100% {
+    box-shadow: 0 10px 26px rgba(var(--pp-red-rgb) / 0.35);
+  }
+  80% {
+    box-shadow:
+      0 10px 26px rgba(var(--pp-red-rgb) / 0.35),
+      0 0 0 10px rgba(var(--pp-red-rgb) / 0.18);
+  }
+  90% {
+    box-shadow:
+      0 10px 26px rgba(var(--pp-red-rgb) / 0.35),
+      0 0 0 18px rgba(var(--pp-red-rgb) / 0);
+  }
+}
+.btn--attention:hover,
+.btn--attention:focus-visible { animation-play-state: paused; }
+
+/* ============================================================
+   9) LOADING — спиннер вместо текста
+   Добавляется классом .is-loading (ставит JS)
+   ============================================================ */
+.btn--loading { position: relative; }
+.btn--loading.is-loading {
+  color: transparent !important;
+  pointer-events: none;
+}
+.btn--loading.is-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255 255 255 / 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: pp-spin 0.7s linear infinite;
+}
+/* для .btn--ghost / .btn--soft — тёмный спиннер */
+.btn--loading.btn--ghost.is-loading::after,
+.btn--loading.btn--soft.is-loading::after {
+  border-color: rgba(var(--gray-900-rgb) / 0.2);
+  border-top-color: var(--color-brand);
+}
+@keyframes pp-spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   10) SUCCESS MORPH — превращение в галочку после отправки
+   Разметка:
+     <button class="btn btn--primary btn--success">
+       <span class="btn__label">Отправить</span>
+       <span class="btn__check" aria-hidden="true"><svg .../></span>
+     </button>
+   JS ставит .is-done после успеха
+   ============================================================ */
+.btn--success { position: relative; }
+.btn--success .btn__label {
+  display: inline-flex;
+  transition: opacity var(--t-fast), transform var(--t-fast);
+}
+.btn--success .btn__check {
+  position: absolute; inset: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: scale(0.3) rotate(-30deg);
+  transition: opacity var(--t-fast), transform var(--t-spring);
+  pointer-events: none;
+}
+.btn--success.is-done {
+  background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 10px 26px rgba(16 185 129 / 0.35);
+}
+.btn--success.is-done .btn__label { opacity: 0; transform: translateY(-6px); }
+.btn--success.is-done .btn__check { opacity: 1; transform: scale(1) rotate(0); }
+
+/* ============================================================
+   11) SHAKE — на ошибку валидации
+   ============================================================ */
+.btn--shake.is-error { animation: pp-shake 0.45s var(--ease-out); }
+@keyframes pp-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ============================================================
+   12) ANIMATED BORDER — премиум-акцент
+   ============================================================ */
+.btn--outline {
+  background: var(--color-surface) padding-box;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  isolation: isolate;
+}
+.btn--outline::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--a, 0turn),
+    var(--pp-red),
+    var(--pp-red-400),
+    var(--pp-red-600),
+    var(--pp-red)
+  );
+  z-index: -1;
+  opacity: 0.35;
+  transition: opacity var(--t-normal);
+}
+.btn--outline:hover::before {
+  opacity: 1;
+  animation: pp-spin-a 3s linear infinite;
+}
+@keyframes pp-spin-a { to { --a: 1turn; } }
+
+/* ============================================================
+   13) ICON POP — иконка «подпрыгивает» на hover
+   ============================================================ */
+.btn--icon-pop svg { transition: transform var(--t-spring); }
+.btn--icon-pop:hover svg {
+  transform: translateY(-2px) rotate(-8deg) scale(1.1);
+}
+
+/* ============================================================
+   14) MAGNETIC — кнопка «притягивается» к курсору (JS)
+   JS ставит --mx/--my в px (см. animations.js)
+   ============================================================ */
+.btn--magnetic {
+  transition: transform var(--t-normal);
+  transform: translate(
+    calc(var(--mx, 0) * 1px),
+    calc(var(--my, 0) * 1px)
+  );
+}
+.btn--magnetic:hover { box-shadow: var(--shadow-md); }
+
+/* ============================================================
+   КАРТОЧКИ — hover lift + подсветка заголовка
+   ============================================================ */
+.card--interactive {
+  transition:
+    transform var(--t-normal),
+    box-shadow var(--t-normal),
+    border-color var(--t-normal);
+  cursor: pointer;
+}
+.card--interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(var(--pp-red-rgb) / 0.2);
+}
+.card--interactive .card__title,
+.card--interactive h3 { transition: color var(--t-fast); }
+.card--interactive:hover .card__title,
+.card--interactive:hover h3 { color: var(--color-brand); }
+
+/* ============================================================
+   ПОЯВЛЕНИЕ НА СКРОЛЛЕ — [data-reveal] (управляется JS)
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--dur-4) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+  will-change: opacity, transform;
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-delay="1"] { transition-delay: 80ms; }
+[data-reveal-delay="2"] { transition-delay: 160ms; }
+[data-reveal-delay="3"] { transition-delay: 240ms; }
+[data-reveal-delay="4"] { transition-delay: 320ms; }
+
+/* ============================================================
+   АККОРДЕОН (FAQ) — плавное раскрытие через grid-rows
+   Разметка:
+     <div class="acc-item" aria-expanded="false">
+       <button class="acc-head">...<span class="chev">▾</span></button>
+       <div class="acc-panel"><div>...</div></div>
+     </div>
+   ============================================================ */
+.acc-item .chev { transition: transform var(--t-normal); }
+.acc-item[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+.acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-3) var(--ease-out);
+}
+.acc-panel > div { overflow: hidden; }
+.acc-item[aria-expanded="true"] .acc-panel { grid-template-rows: 1fr; }
+
+/* ============================================================
+   МОДАЛКА — scale + fade для <dialog class="modal">
+   ============================================================ */
+dialog.modal::backdrop {
+  background: rgba(var(--gray-900-rgb) / 0.55);
+  backdrop-filter: blur(4px);
+  animation: pp-m-fade var(--dur-3) var(--ease-out);
+}
+dialog.modal[open] .modal__dialog {
+  animation: pp-m-in var(--dur-3) var(--ease-out);
+}
+@keyframes pp-m-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pp-m-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* ============================================================
+   ТОСТ — появление справа снизу
+   Разметка:
+     <div class="toast-stack"><div class="toast toast--success">...</div></div>
+   ============================================================ */
+.toast {
+  animation: pp-toast-in var(--dur-3) var(--ease-spring);
+}
+@keyframes pp-toast-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+.toast.is-leaving {
+  animation: pp-toast-out var(--dur-2) var(--ease-out) forwards;
+}
+@keyframes pp-toast-out {
+  to { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+
+/* ============================================================
+   HEADER — тень появляется после скролла
+   На <header> JS ставит класс .is-scrolled
+   ============================================================ */
+.header {
+  transition:
+    background-color var(--t-normal),
+    box-shadow var(--t-normal),
+    border-color var(--t-normal);
+}
+.header.is-scrolled {
+  background: rgba(var(--gray-900-rgb) / 0.04);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: saturate(1.2) blur(8px);
+  -webkit-backdrop-filter: saturate(1.2) blur(8px);
+}
+
+/* ============================================================
+   СЧЁТЧИК — плавное появление числа (класс-хук)
+   На элемент JS ставит data-counter-target; CSS лишь делает
+   мягкий fade-up, а само значение обновляется в JS.
+   ============================================================ */
+[data-counter] {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity var(--dur-3) var(--ease-out),
+    transform var(--dur-3) var(--ease-out);
+}
+[data-counter].is-in { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   FLOAT LABEL — плавающий лейбл для .field (опционально)
+   Разметка:
+     <label class="field field--float">
+       <input class="field__control" placeholder=" " />
+       <span class="field__label">Имя</span>
+     </label>
+   ============================================================ */
+.field--float { position: relative; display: block; }
+.field--float .field__label {
+  position: absolute;
+  left: var(--space-4, 16px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-surface);
+  padding: 0 4px;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-base);
+  pointer-events: none;
+  transition:
+    top var(--t-fast),
+    font-size var(--t-fast),
+    color var(--t-fast);
+}
+.field--float .field__control:focus + .field__label,
+.field--float .field__control:not(:placeholder-shown) + .field__label {
+  top: 0;
+  font-size: var(--fs-xs);
+  color: var(--color-brand);
+}
+
+/* ============================================================
+   REDUCED MOTION — уважаем системные настройки
+   Не делаем на уровне отдельных правил — один глобальный блок
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,75 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.card--elevated {
+  box-shadow: var(--shadow-md);
+}
+
+.card--hero {
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+}
+
+.card--service {
+  padding: var(--space-4);
+  gap: var(--space-4);
+  border-radius: var(--radius-lg);
+  transition: transform var(--t-fast), box-shadow var(--t-fast), border-color var(--t-fast);
+}
+
+.card--service:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-strong);
+}
+
+.card--service h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-800);
+}
+
+.card--service p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-500);
+}
+
+.card--step {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--space-4);
+}
+
+.card__step-number {
+  font-family: var(--font-ui);
+  font-weight: var(--fw-800);
+  font-size: var(--fs-xl);
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.98);
+  background: var(--color-brand);
+  border: 1px solid rgba(var(--pp-red-rgb) / 0.55);
+  border-radius: var(--radius-xl);
+  display: grid;
+  place-items: center;
+  height: 56px;
+  min-width: 64px;
+}
+
+.card--quote {
+  position: relative;
+  padding: 3rem 2.5rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(var(--pp-red-rgb) / 0.7);
+  background-color: rgb(var(--pp-red-rgb));
+  background: linear-gradient(135deg, rgba(var(--pp-red-rgb) / 0.98), rgba(176, 0, 18, 0.94));
+  box-shadow: var(--shadow-lg);
+}
+

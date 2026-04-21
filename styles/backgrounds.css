@@ -1,0 +1,381 @@
+/* ============================================================
+   POBYT POLSKA — backgrounds.css
+   ------------------------------------------------------------
+   Набор фоновых текстур и акцентов. Подключать ПОСЛЕ styles.css.
+   Все классы совместимы с текущим подходом проекта:
+     - не ломают existing body-фон (radial blobs + crest mask)
+     - не конфликтуют с section--alt и data-crest-reveal
+     - уважают светлую/тёмную темы через токены
+   Все паттерны сделаны на чистом CSS (SVG mask для grain).
+
+   Требуемые токены (уже есть в styles.css):
+     --pp-red-rgb, --pp-red, --gray-900-rgb,
+     --color-surface, --color-surface-alt, --color-border,
+     --bg, --bg-alt.
+   ============================================================ */
+
+/* ---------- @property для conic-анимации (hero aurora) ---------- */
+@property --hue {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+/* ============================================================
+   ОБЩИЙ ХЕЛПЕР: делает элемент «сценой» под декоративный ::after
+   Применять только если в секции нет собственного isolation/stacking
+   ============================================================ */
+.bg-stage { position: relative; isolation: isolate; overflow: hidden; }
+
+/* ============================================================
+   1) GRAIN — SVG-шум как overlay
+   Использование: <body class="bg-grain-fixed"> или <section class="bg-grain">
+   ============================================================ */
+.bg-grain { position: relative; isolation: isolate; }
+.bg-grain::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.38'/></svg>");
+  background-size: 220px 220px;
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* зернистость на весь viewport — кладём на body::after */
+.bg-grain-fixed { position: relative; }
+.bg-grain-fixed::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.38'/></svg>");
+  background-size: 220px 220px;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   2) DOT GRID — radial-gradient точек
+   ============================================================ */
+.bg-dots {
+  background-image: radial-gradient(
+    rgba(var(--gray-900-rgb) / 0.14) 1px,
+    transparent 1.2px
+  );
+  background-size: 22px 22px;
+}
+.bg-dots--fade {
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 85%);
+          mask-image: radial-gradient(ellipse at center, #000 40%, transparent 85%);
+}
+.bg-dots--brand {
+  background-image: radial-gradient(
+    rgba(var(--pp-red-rgb) / 0.22) 1px,
+    transparent 1.2px
+  );
+}
+
+/* ============================================================
+   3) GRID — тонкая архитектурная сетка
+   ============================================================ */
+.bg-grid {
+  background-image:
+    linear-gradient(to right,  rgba(var(--gray-900-rgb) / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--gray-900-rgb) / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 80%);
+          mask-image: radial-gradient(ellipse at center, #000 35%, transparent 80%);
+}
+
+/* ============================================================
+   4) DIAGONAL STRIPES — «водяной знак»
+   ============================================================ */
+.bg-stripes {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(var(--pp-red-rgb) / 0.05) 0 14px,
+    transparent 14px 28px
+  );
+}
+
+/* ============================================================
+   5) PAPER LINES — разлинованный лист
+   ============================================================ */
+.bg-paper {
+  background-color: var(--color-surface);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 29px,
+    rgba(var(--gray-900-rgb) / 0.08) 29px 30px
+  );
+}
+
+/* ============================================================
+   6) WARM MESH — 4 радиальные кляксы для body
+   ============================================================ */
+.bg-mesh-warm {
+  background:
+    radial-gradient(900px 520px at 12% 10%,  rgba(var(--pp-red-rgb) / 0.22), transparent 60%),
+    radial-gradient(780px 480px at 88% 20%,  rgba(255, 242, 0, 0.14),        transparent 65%),
+    radial-gradient(640px 420px at 70% 90%,  rgba(var(--pp-red-rgb) / 0.18), transparent 60%),
+    radial-gradient(520px 360px at 30% 88%,  rgba(46, 49, 146, 0.08),        transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+}
+
+/* ============================================================
+   7) AURORA — анимированный conic-gradient для hero
+   ============================================================ */
+.bg-aurora { position: relative; isolation: isolate; overflow: hidden; }
+.bg-aurora::before {
+  content: '';
+  position: absolute; inset: -80px;
+  z-index: 0;
+  background: conic-gradient(
+    from calc(var(--hue) * 1deg) at 30% 30%,
+    rgba(var(--pp-red-rgb) / 0.35),
+    transparent 30%,
+    rgba(255, 242, 0, 0.2) 60%,
+    transparent 85%,
+    rgba(var(--pp-red-rgb) / 0.35)
+  );
+  filter: blur(40px);
+  animation: pp-aurora 18s linear infinite;
+  pointer-events: none;
+}
+.bg-aurora > * { position: relative; z-index: 1; }
+@keyframes pp-aurora { to { --hue: 360; } }
+
+/* ============================================================
+   8) FLOATING BLOBS — две «дышащие» кляксы
+   ============================================================ */
+.bg-blobs { position: relative; isolation: isolate; overflow: hidden; }
+.bg-blobs::before, .bg-blobs::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-blobs::before {
+  width: 60%; aspect-ratio: 1;
+  top: -20%; left: -10%;
+  background: radial-gradient(circle, rgba(var(--pp-red-rgb) / 0.35) 0%, transparent 60%);
+  animation: pp-blob1 14s ease-in-out infinite;
+}
+.bg-blobs::after {
+  width: 55%; aspect-ratio: 1;
+  bottom: -30%; right: -10%;
+  background: radial-gradient(circle, rgba(255, 242, 0, 0.25) 0%, transparent 60%);
+  animation: pp-blob2 16s ease-in-out infinite;
+}
+.bg-blobs > * { position: relative; z-index: 1; }
+@keyframes pp-blob1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(8%, 6%) scale(1.08); } }
+@keyframes pp-blob2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-8%, -4%) scale(0.92); } }
+
+/* ============================================================
+   9) CREST WATERMARK — локальный герб в углу секции
+   Требует /assets/poland-crest.svg
+   ============================================================ */
+.bg-watermark { position: relative; isolation: isolate; overflow: hidden; }
+.bg-watermark::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-color: rgba(var(--pp-red-rgb) / 1);
+  -webkit-mask-image: url("../assets/poland-crest.svg");
+          mask-image: url("../assets/poland-crest.svg");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 260px auto;
+          mask-size: 260px auto;
+  -webkit-mask-position: right -40px top -20px;
+          mask-position: right -40px top -20px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-watermark > * { position: relative; z-index: 1; }
+
+/* ============================================================
+   10) FLAG STRIPE — отсылка к польскому флагу
+   ============================================================ */
+.bg-flag {
+  background:
+    linear-gradient(to bottom,
+      var(--color-surface) 0 55%,
+      var(--pp-red) 55% 58%,
+      var(--color-surface) 58% 100%);
+  position: relative;
+}
+.bg-flag::after {
+  content: '';
+  position: absolute; inset: auto 0 0 0; height: 56%;
+  background: linear-gradient(to bottom, transparent, var(--color-surface));
+  pointer-events: none;
+}
+
+/* ============================================================
+   11) CONTOUR RINGS — топографические кольца (для секции с картой)
+   ============================================================ */
+.bg-contour {
+  background:
+    repeating-radial-gradient(circle at 15% 100%,
+      rgba(var(--pp-red-rgb) / 0.07) 0 1px,
+      transparent 1px 32px),
+    var(--color-surface);
+}
+
+/* ============================================================
+   12) GRADIENT BAND — диагональная «лента»
+   ============================================================ */
+.bg-band {
+  background:
+    linear-gradient(120deg,
+      transparent 0 42%,
+      rgba(var(--pp-red-rgb) / 0.12) 42% 58%,
+      transparent 58% 100%),
+    var(--color-surface);
+}
+
+/* ============================================================
+   13) SOFT PANEL — мягкая тёплая подложка
+   Альтернатива текущему .section--alt
+   ============================================================ */
+.bg-soft {
+  background:
+    radial-gradient(420px 220px at 20% 0%, rgba(var(--pp-red-rgb) / 0.08), transparent 60%),
+    linear-gradient(180deg, var(--color-surface), #faf7f8);
+  border-top: 1px solid rgba(var(--pp-red-rgb) / 0.06);
+  border-bottom: 1px solid rgba(var(--pp-red-rgb) / 0.06);
+}
+
+/* ============================================================
+   14) DOT MATRIX — двойная сетка точек с diagonal fade
+   ============================================================ */
+.bg-matrix {
+  background-image:
+    radial-gradient(rgba(var(--pp-red-rgb) / 0.2) 1.4px, transparent 1.6px),
+    radial-gradient(rgba(var(--gray-900-rgb) / 0.08) 1px, transparent 1.2px);
+  background-size: 28px 28px, 14px 14px;
+  background-position: 0 0, 14px 14px;
+  -webkit-mask-image: linear-gradient(160deg, #000 0%, #000 50%, transparent 90%);
+          mask-image: linear-gradient(160deg, #000 0%, #000 50%, transparent 90%);
+}
+
+/* ============================================================
+   15) CONIC SPOTLIGHT — угловой «прожектор»
+   ============================================================ */
+.bg-spotlight {
+  background:
+    conic-gradient(from 200deg at 10% 0%,
+      rgba(var(--pp-red-rgb) / 0.18),
+      transparent 25%,
+      transparent 60%,
+      rgba(var(--pp-red-rgb) / 0.08) 75%,
+      transparent 90%),
+    var(--color-surface);
+}
+
+/* ============================================================
+   ТЁМНАЯ ТЕМА — инверсия цветов для тонких текстур
+   (mesh и blobs уже правильно реагируют через rgba)
+   ============================================================ */
+:root[data-theme='dark'] .bg-dots {
+  background-image: radial-gradient(
+    rgba(255 255 255 / 0.08) 1px,
+    transparent 1.2px
+  );
+}
+
+:root[data-theme='dark'] .bg-grid {
+  background-image:
+    linear-gradient(to right,  rgba(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255 255 255 / 0.05) 1px, transparent 1px);
+}
+
+:root[data-theme='dark'] .bg-paper {
+  background-color: #121216;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 29px,
+    rgba(255 255 255 / 0.05) 29px 30px
+  );
+}
+
+:root[data-theme='dark'] .bg-stripes {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(var(--pp-red-rgb) / 0.08) 0 14px,
+    transparent 14px 28px
+  );
+}
+
+:root[data-theme='dark'] .bg-flag {
+  background:
+    linear-gradient(to bottom,
+      #0d0d0f 0 55%,
+      var(--pp-red) 55% 58%,
+      #0d0d0f 58% 100%);
+}
+:root[data-theme='dark'] .bg-flag::after {
+  background: linear-gradient(to bottom, transparent, #0d0d0f);
+}
+
+:root[data-theme='dark'] .bg-contour {
+  background:
+    repeating-radial-gradient(circle at 15% 100%,
+      rgba(var(--pp-red-rgb) / 0.10) 0 1px,
+      transparent 1px 32px),
+    #0d0d0f;
+}
+
+:root[data-theme='dark'] .bg-soft {
+  background:
+    radial-gradient(420px 220px at 20% 0%, rgba(var(--pp-red-rgb) / 0.10), transparent 60%),
+    linear-gradient(180deg, #0d0d0f, #121216);
+  border-top-color: rgba(255 255 255 / 0.05);
+  border-bottom-color: rgba(255 255 255 / 0.05);
+}
+
+:root[data-theme='dark'] .bg-watermark {
+  background-color: #0d0d0f;
+}
+
+:root[data-theme='dark'] .bg-matrix {
+  background-image:
+    radial-gradient(rgba(var(--pp-red-rgb) / 0.25) 1.4px, transparent 1.6px),
+    radial-gradient(rgba(255 255 255 / 0.05) 1px, transparent 1.2px);
+}
+
+:root[data-theme='dark'] .bg-spotlight {
+  background:
+    conic-gradient(from 200deg at 10% 0%,
+      rgba(var(--pp-red-rgb) / 0.25),
+      transparent 25%,
+      transparent 60%,
+      rgba(var(--pp-red-rgb) / 0.10) 75%,
+      transparent 90%),
+    #0d0d0f;
+}
+
+:root[data-theme='dark'] .bg-band {
+  background:
+    linear-gradient(120deg,
+      transparent 0 42%,
+      rgba(var(--pp-red-rgb) / 0.18) 42% 58%,
+      transparent 58% 100%),
+    #0d0d0f;
+}
+
+/* ============================================================
+   REDUCED MOTION — выключаем анимированные фоны
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .bg-aurora::before,
+  .bg-blobs::before,
+  .bg-blobs::after {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,132 @@
+.btn {
+  --btn-bg: var(--color-surface);
+  --btn-color: var(--color-text);
+  --btn-border: var(--color-border-strong);
+  --btn-shadow: var(--shadow-xs);
+  --btn-pad-y: var(--space-4);
+  --btn-pad-x: var(--space-5);
+  --btn-radius: var(--radius-lg);
+  --btn-fs: var(--fs-base);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--btn-radius);
+  font: var(--fw-600) var(--btn-fs) / 1 var(--font-ui);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition:
+    background-color var(--t-normal),
+    color var(--t-normal),
+    border-color var(--t-normal),
+    box-shadow var(--t-normal),
+    transform var(--t-fast),
+    filter var(--t-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus);
+}
+
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn--primary {
+  --btn-bg: linear-gradient(180deg, var(--pp-red) 0%, var(--pp-red-600) 100%);
+  --btn-color: var(--white);
+  --btn-border: transparent;
+  --btn-shadow: 0 10px 26px rgba(var(--pp-red-rgb) / 0.35);
+}
+
+.btn--primary:hover {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.96);
+  color: rgba(var(--pp-red-rgb) / 0.98);
+  border-color: rgba(var(--pp-red-rgb) / 0.5);
+  box-shadow:
+    0 0 0 3px rgba(var(--pp-red-rgb) / 0.14),
+    var(--shadow-md);
+  filter: saturate(1.06);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-border: var(--color-border);
+}
+
+:root[data-theme='dark'] .btn--ghost {
+  --btn-bg: rgba(255, 255, 255, 0.04);
+  --btn-border: var(--stroke);
+  --btn-color: var(--text);
+}
+
+:root[data-theme='dark'] .hero__actions .btn--ghost:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--brand-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn--soft {
+  --btn-bg: var(--color-brand-soft);
+  --btn-color: var(--color-brand-hover);
+  --btn-border: transparent;
+}
+
+.btn--link {
+  --btn-bg: transparent;
+  --btn-border: transparent;
+  --btn-shadow: none;
+  text-decoration: underline;
+  padding-inline: 0;
+}
+
+.btn--sm {
+  --btn-pad-y: var(--space-2);
+  --btn-pad-x: var(--space-3);
+  --btn-fs: var(--fs-sm);
+}
+
+.btn--lg {
+  --btn-pad-y: var(--space-4);
+  --btn-pad-x: var(--space-6);
+  --btn-fs: var(--fs-lg);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--icon {
+  padding-inline: var(--space-3);
+}
+
+.btn--pill {
+  --btn-radius: var(--radius-full);
+}

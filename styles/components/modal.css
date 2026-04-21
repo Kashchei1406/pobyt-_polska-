@@ -1,0 +1,49 @@
+.modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+  width: min(560px, calc(100% - 26px));
+}
+
+.modal--wide {
+  width: min(980px, calc(100% - 26px));
+}
+
+.modal::backdrop {
+  background: rgba(2, 6, 23, 0.32);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal__dialog,
+.modal__card {
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(var(--gray-900-rgb) / 0.12);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.modal__head h2 {
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-800);
+}
+
+.modal__body {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.modal__foot,
+.modal__menu {
+  margin-top: var(--space-4);
+}

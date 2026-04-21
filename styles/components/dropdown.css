@@ -1,0 +1,50 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: var(--z-dropdown);
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.dropdown__menu[hidden] {
+  display: none;
+}
+
+.dropdown--mobile .dropdown__menu {
+  position: static;
+  width: 100%;
+  margin-top: var(--space-2);
+  box-shadow: none;
+  justify-content: space-between;
+}
+
+.dropdown--suggestions .dropdown__menu {
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: block;
+  padding: 0;
+}
+
+.dropdown--header .dropdown__menu .about-contact {
+  padding: 7px var(--space-3);
+}
+
+.dropdown--floater .dropdown__menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

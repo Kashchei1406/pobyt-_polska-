@@ -10,22 +10,10 @@
     />
     <link rel="icon" type="image/svg+xml" href="./assets/pobyt-polska-favicon.svg" />
     <link rel="shortcut icon" href="./assets/pobyt-polska-favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css?v=about-card-v15" />
-    <link rel="stylesheet" href="./pobyt-quiz.css?v=3" />
+    <link rel="stylesheet" href="styles/01-tokens.css" />
+    <link rel="stylesheet" href="./assets/faq-fonts.css?v=1" />
+    <link rel="stylesheet" href="./styles.css?v=form-label-dark-v3" />
+    <link rel="stylesheet" href="./styles/components/quiz.css?v=10" />
     <!-- URL для отправки заявок: таблица + Telegram (см. README). -->
     <script>window.FORM_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycbxADieL_vl8Etj9w_d_HY6zwcmjZ3uU2oe8oxzhIVqXVEvVrF-2SQGJxyuehZKg7H7A/exec';</script>
     <!-- URL скрипта отзывов: Развернуть → Новое развертывание → Веб-приложение → скопировать URL сюда. -->
@@ -62,15 +50,44 @@
 
         <div class="header__cta">
           <a class="chip" href="tel:+48733060361">+48 733 060 361</a>
-          <a
-            class="btn btn--primary btn--attention"
-            href="https://t.me/Daria_Kaszczej"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Написать в Telegram"
+          <button class="btn btn--ghost theme-toggle-btn" type="button" data-theme-toggle aria-label="Переключить тему">
+            🌙
+          </button>
+          <button
+            class="btn btn--primary btn--attention header-write-btn"
+            type="button"
+            data-dropdown-toggle
+            data-contact-toggle
+            aria-expanded="false"
+            aria-controls="headerContactMenu"
           >
             Написать
-          </a>
+          </button>
+          <div class="dropdown dropdown--header" data-dropdown>
+          <div class="dropdown__menu" id="headerContactMenu" data-contact-menu role="menu" hidden>
+            <a class="about-contact about-contact--tg" href="https://t.me/Daria_Kaszczej" target="_blank" rel="noreferrer">
+              <span class="about-contact__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z" />
+                </svg>
+              </span>
+              <span>Telegram</span>
+            </a>
+            <a class="about-contact about-contact--wa" href="https://api.whatsapp.com/send?phone=48733060361" target="_blank" rel="noreferrer">
+              <span class="about-contact__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z" />
+                </svg>
+              </span>
+              <span>WhatsApp</span>
+            </a>
+            <a class="about-contact about-contact--viber" href="viber://chat?number=%2B48733060361" target="_blank" rel="noreferrer">
+              <span class="about-contact__icon" aria-hidden="true">Vb</span>
+              <span>Viber</span>
+            </a>
+          </div>
+          </div>
         </div>
 
         <button
@@ -94,23 +111,51 @@
           <a href="#map" data-mobile-link>Как нас найти</a>
           <div class="mobile__actions">
             <a class="btn btn--ghost" href="tel:+48733060361">Позвонить</a>
-            <a
-              class="btn btn--primary btn--attention"
-              href="https://t.me/Daria_Kaszczej"
-              target="_blank"
-              rel="noreferrer"
-              data-mobile-link
-              aria-label="Написать в Telegram"
+            <button class="btn btn--ghost theme-toggle-btn" type="button" data-theme-toggle aria-label="Переключить тему">
+              🌙
+            </button>
+            <button
+              class="btn btn--primary btn--attention header-write-btn"
+              type="button"
+              data-dropdown-toggle
+              data-contact-toggle
+              aria-expanded="false"
+              aria-controls="mobileContactMenu"
             >
               Написать
-            </a>
+            </button>
+            <div class="dropdown dropdown--header dropdown--mobile" data-dropdown>
+            <div class="dropdown__menu" id="mobileContactMenu" data-contact-menu role="menu" hidden>
+              <a class="about-contact about-contact--tg" href="https://t.me/Daria_Kaszczej" target="_blank" rel="noreferrer">
+                <span class="about-contact__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z" />
+                  </svg>
+                </span>
+                <span>Telegram</span>
+              </a>
+              <a class="about-contact about-contact--wa" href="https://api.whatsapp.com/send?phone=48733060361" target="_blank" rel="noreferrer">
+                <span class="about-contact__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z" />
+                  </svg>
+                </span>
+                <span>WhatsApp</span>
+              </a>
+              <a class="about-contact about-contact--viber" href="viber://chat?number=%2B48733060361" target="_blank" rel="noreferrer">
+                <span class="about-contact__icon" aria-hidden="true">Vb</span>
+                <span>Viber</span>
+              </a>
+            </div>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
     <main id="content">
-      <section class="hero">
+      <section class="section section--hero hero" id="hero">
         <div class="container hero__grid">
           <div class="hero__copy">
             <p class="badge">5+ лет опыта · 500+ клиентов · 98% успешных дел</p>
@@ -120,7 +165,7 @@
             </p>
 
             <div class="hero__actions">
-              <button class="btn btn--primary" data-open-lead="hero">
+              <button class="btn btn--primary" data-open="lead-modal" data-open-lead="hero">
                 Получить консультацию
               </button>
               <a class="btn btn--ghost" href="#services">Посмотреть, чем можем помочь</a>
@@ -143,7 +188,7 @@
           </div>
 
           <div class="hero__card" aria-label="Форма быстрой заявки">
-            <div class="card">
+            <div class="card card--hero">
               <h2 class="card__title">Разберём вашу ситуацию бесплатно</h2>
               <p class="card__sub">
                 Оставьте имя и телефон — перезвоним и объясним, что делать именно в вашем случае. Без лишних слов и давления.
@@ -160,13 +205,13 @@
                   title=""
                 />
                 <label class="field">
-                  <span>Имя</span>
-                  <input name="name" autocomplete="name" required placeholder="Ваше имя" />
+                  <span class="field__label">Имя</span>
+                  <input class="field__control" name="name" autocomplete="name" required placeholder="Ваше имя" />
                 </label>
 
                 <label class="field">
-                  <span>Телефон</span>
-                  <input
+                  <span class="field__label">Телефон</span>
+                  <input class="field__control"
                     type="tel"
                     id="phone-hero"
                     name="phone"
@@ -180,24 +225,24 @@
                   />
                 </label>
 
-                <div class="field field--contact-pref">
-                  <span>Как с вами связаться?</span>
-                  <div class="contact-pref" role="radiogroup" aria-label="Как с вами связаться">
-                    <label class="contact-pref__opt">
-                      <input type="radio" name="contact_pref" value="phone" checked />
-                      <span>Телефон</span>
-                    </label>
-                    <label class="contact-pref__opt">
-                      <input type="radio" name="contact_pref" value="messenger" />
-                      <span>Мессенджер</span>
-                    </label>
-                  </div>
-                </div>
+                <fieldset class="field field--contact-pref radio-group" role="radiogroup" aria-label="Как с вами связаться">
+                  <span class="field__label">Как с вами связаться?</span>
+                  <label class="radio">
+                    <input class="radio__input" type="radio" name="contact_pref" value="phone" checked />
+                    <span class="radio__indicator" aria-hidden="true"></span>
+                    <span class="radio__label">Телефон</span>
+                  </label>
+                  <label class="radio">
+                    <input class="radio__input" type="radio" name="contact_pref" value="messenger" />
+                    <span class="radio__indicator" aria-hidden="true"></span>
+                    <span class="radio__label">Мессенджер</span>
+                  </label>
+                </fieldset>
 
                 <label class="field">
-                  <span>Город</span>
+                  <span class="field__label">Город</span>
                   <div class="field-select">
-                    <select name="city" required aria-label="Город">
+                    <select class="field__control field__control--select" name="city" required aria-label="Город">
                       <option value="" selected>Выберите город</option>
                       <option value="Варшава">Варшава</option>
                       <option value="Краков">Краков</option>
@@ -217,8 +262,8 @@
                 </label>
 
                 <label class="field">
-                  <span>Вопрос</span>
-                  <textarea
+                  <span class="field__label">Вопрос</span>
+                  <textarea class="field__control field__control--textarea"
                     name="message"
                     rows="3"
                     placeholder="Коротко опишите ситуацию: основание, сроки, воеводство…"
@@ -249,22 +294,22 @@
             <div id="ppq-intro" class="ppq-anim ppq-intro-plank">
               <h2 class="ppq-intro-title">Узнайте, можете ли вы легализоваться в Польше</h2>
               <p class="ppq-intro-sub">6 коротких вопросов — получите вывод по вашей ситуации и поймёте, с чего начать.</p>
-              <button class="ppq-btn ppq-btn-primary" onclick="ppqStart()">Начать — это бесплатно</button>
+              <button class="btn btn--primary" type="button" data-quiz-action="start">Начать — это бесплатно</button>
             </div>
 
-            <div id="ppq-body" style="display:none">
+            <div id="ppq-body" hidden>
               <div class="ppq-progress-row">
                 <div class="ppq-bar-outer"><div class="ppq-bar-inner" id="ppq-bar"></div></div>
                 <div class="ppq-progress-label" id="ppq-prog-lbl">1 из 6</div>
               </div>
               <div id="ppq-question" class="ppq-anim"></div>
               <div class="ppq-nav">
-                <button class="ppq-btn ppq-btn-ghost" id="ppq-back" onclick="ppqBack()" style="visibility:hidden">← Назад</button>
-                <button class="ppq-btn ppq-btn-primary" id="ppq-next" onclick="ppqNext()" disabled>Далее →</button>
+                <button class="btn btn--ghost" id="ppq-back" type="button" data-quiz-action="back" style="visibility:hidden">← Назад</button>
+                <button class="btn btn--primary" id="ppq-next" type="button" data-quiz-action="next" disabled>Далее →</button>
               </div>
             </div>
 
-            <div id="ppq-result" style="display:none"></div>
+            <div id="ppq-result" hidden></div>
           </div>
         </div>
       </section>
@@ -272,94 +317,103 @@
       <section class="section" id="services" data-crest-reveal>
         <div class="container">
           <div class="section__head">
-            <h2>С чем мы помогаем</h2>
-            <p class="muted">
+            <h2 class="section__title">С чем мы помогаем</h2>
+            <p class="section__subtitle muted">
               Выберите свою ситуацию — объясним, что делать дальше
             </p>
           </div>
 
           <div class="grid grid--3">
-            <article class="tile">
+            <article class="card card--service">
               <h3>ВНЖ / карта побыту</h3>
               <p class="muted">
                 Первая карта или продление статуса — разберём основание, соберём документы и сопроводим до результата.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('vnj')">
+              <button type="button" class="btn btn--primary btn--block" data-service="vnj">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
-            <article class="tile">
+            <article class="card card--service">
               <h3>ПМЖ / резидент ЕС</h3>
               <p class="muted">
                 Проверим стаж и доходы, найдём возможные проблемы до подачи и подготовим полный пакет.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('pmj')">
+              <button type="button" class="btn btn--primary btn--block" data-service="pmj">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
-            <article class="tile">
+            <article class="card card--service">
               <h3>Семейная подача</h3>
               <p class="muted">
                 Сопровождаем всю семью: общий процесс и честная цена без скрытых доплат.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('family')">
+              <button type="button" class="btn btn--primary btn--block" data-service="family">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
-            <article class="tile">
+            <article class="card card--service">
               <h3>JDG и компании</h3>
               <p class="muted">
                 Легализация для IT-специалистов и предпринимателей с JDG/Spółka — с учётом специфики бизнеса.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('jdg')">
+              <button type="button" class="btn btn--primary btn--block" data-service="jdg">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
-            <article class="tile">
+            <article class="card card--service">
               <h3>Апелляция после отказа</h3>
               <p class="muted">
                 Получили отказ? Разберём причину и подготовим аргументированную жалобу.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('appeal')">
+              <button type="button" class="btn btn--primary btn--block" data-service="appeal">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
-            <article class="tile">
+            <article class="card card--service">
               <h3>Ускорение выдачи</h3>
               <p class="muted">
                 Ждёте больше полугода? Помогаем сдвинуть дело с места — запросы, письма, контроль статуса.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('speed')">
+              <button type="button" class="btn btn--primary btn--block" data-service="speed">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
-            <article class="tile">
+            <article class="card card--service">
               <h3>Карта поляка</h3>
               <p class="muted">
                 Есть польские корни — разберём документы, заполним внёсок и подготовим к экзамену.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('karta')">
+              <button type="button" class="btn btn--primary btn--block" data-service="karta">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
-            <article class="tile">
+            <article class="card card--service">
               <h3>Старт в Польше</h3>
               <p class="muted">
                 Только приехали? Поможем оформить PESEL, прописку, открыть счёт и разобраться с польскими реалиями.
               </p>
-              <button type="button" class="btn btn--primary btn--block services-card-btn" onclick="svcOpenModal('start')">
+              <button type="button" class="btn btn--primary btn--block" data-service="start">
+                <span>Что входит и цена</span><span aria-hidden="true">→</span>
+              </button>
+            </article>
+            <article class="card card--service">
+              <h3>Замена прав</h3>
+              <p class="muted">
+                Сопроводим замену водительского удостоверения в Польше: проверим основания, подготовим документы и проведём до результата.
+              </p>
+              <button type="button" class="btn btn--primary btn--block" data-service="prava">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
               </button>
             </article>
           </div>
 
-          <div class="callout">
-            <div class="callout__text">
-              <strong>Не нашли свою ситуацию в списке?</strong>
-              <span class="muted">Напишите кратко, что у вас за кейс — подскажем, как мы можем помочь, и следующий шаг.</span>
+          <div class="services-all-cta">
+            <div class="services-all-cta__text">
+              <strong>Нужен полный список?</strong>
+              <span class="muted">Откройте все услуги в одном месте и выберите подходящий вариант.</span>
             </div>
-            <button class="btn btn--primary" data-open-lead="services">
-              Записаться
+            <button type="button" class="btn btn--primary services-all-cta__btn" data-open-all-services>
+              Посмотреть все услуги
             </button>
           </div>
         </div>
@@ -368,27 +422,27 @@
       <section class="section section--alt" id="process">
         <div class="container">
           <div class="section__head">
-            <h2>Как это работает</h2>
-            <p class="muted">Никаких сюрпризов — вы всегда знаете, что происходит с вашим делом</p>
+            <h2 class="section__title">Как это работает</h2>
+            <p class="section__subtitle muted">Никаких сюрпризов — вы всегда знаете, что происходит с вашим делом</p>
           </div>
 
           <ol class="steps">
-            <li class="step">
-              <div class="step__n">01</div>
+            <li class="card card--step">
+              <span class="card__step-number">01</span>
               <div class="step__c">
                 <h3>Заявка</h3>
                 <p class="muted">Оставьте контакт — мы позвоним, выслушаем ситуацию и зададим пару уточняющих вопросов.</p>
               </div>
             </li>
-            <li class="step">
-              <div class="step__n">02</div>
+            <li class="card card--step">
+              <span class="card__step-number">02</span>
               <div class="step__c">
                 <h3>Консультация</h3>
                 <p class="muted">Объясняем, что реально в вашей ситуации, какие документы нужны и сколько времени займёт процесс.</p>
               </div>
             </li>
-            <li class="step">
-              <div class="step__n">03</div>
+            <li class="card card--step">
+              <span class="card__step-number">03</span>
               <div class="step__c">
                 <h3>Договор</h3>
                 <p class="muted">
@@ -397,15 +451,15 @@
                 </p>
               </div>
             </li>
-            <li class="step">
-              <div class="step__n">04</div>
+            <li class="card card--step">
+              <span class="card__step-number">04</span>
               <div class="step__c">
                 <h3>Подготовка</h3>
                 <p class="muted">Готовим анкеты, письма и переводы. Комплектуем пакет так, чтобы не было причин для отказа.</p>
               </div>
             </li>
-            <li class="step">
-              <div class="step__n">05</div>
+            <li class="card card--step">
+              <span class="card__step-number">05</span>
               <div class="step__c">
                 <h3>Сопровождение</h3>
                 <p class="muted">Следим за статусом дела, отвечаем на запросы воеводства и держим вас в курсе на каждом этапе.</p>
@@ -418,59 +472,471 @@
       <section class="section" id="faq">
         <div class="container">
           <div class="section__head">
-            <h2>Часто задаваемые вопросы</h2>
-            <p class="muted">Краткие ответы по легализации пребывания в Польше</p>
+            <h2 class="section__title">Часто задаваемые вопросы</h2>
+            <p class="section__subtitle muted">
+              Краткие ответы по легализации пребывания в Польше
+            </p>
           </div>
-          <div class="faq" data-accordion>
-            <details class="qa">
-              <summary>Что такое вид на жительство в Польше?</summary>
-              <p class="qa__a">
-                Документ (решение воеводы и пластиковая карта), который удостоверяет личность иностранца и подтверждает разрешение на проживание более 3 месяцев. Даёт право без визы находиться в Польше и в странах Шенгена до 90 дней в каждом полугодии. Оформляется только на территории Польши.
+          <div class="pp-faq__toolbar">
+            <div class="pp-faq__search-wrap dropdown dropdown--suggestions" data-dropdown>
+              <svg class="pp-faq__search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="8.5" cy="8.5" r="5.5" />
+                <path d="M13.5 13.5l3.5 3.5" />
+              </svg>
+              <input
+                id="ppFaqSearch"
+                class="pp-faq__search-input"
+                data-dropdown-toggle
+                type="search"
+                data-pp-faq-search
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Например: CUKR, штамп, MOS, NFZ…"
+                aria-autocomplete="list"
+                aria-controls="ppFaqSuggestions"
+                aria-expanded="false"
+              />
+              <button type="button" class="pp-faq__search-clear" id="ppFaqSearchClear" aria-label="Очистить поиск" hidden>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M1 1l8 8M9 1L1 9" />
+                </svg>
+              </button>
+              <div id="ppFaqSuggestions" class="dropdown__menu pp-faq__suggestions" role="listbox" aria-label="Подсказки по словам" hidden></div>
+            </div>
+            <p id="ppFaqSearchCount" class="pp-faq__search-count" aria-live="polite"></p>
+            <div id="ppFaqSearchEmpty" class="pp-faq__search-empty" hidden>
+              <p class="pp-faq__search-empty-icon" aria-hidden="true">◎</p>
+              <p>
+                Ничего не найдено.<br />
+                Попробуйте другой запрос или
+                <button type="button" class="pp-faq__search-empty-btn" data-pp-faq-search-reset>сбросьте поиск</button>.
               </p>
-            </details>
-            <details class="qa">
-              <summary>Что такое временный вид на жительство (ВНЖ)?</summary>
-              <p class="qa__a">
-                Карта временного проживания (karta pobytu czasowego) — разрешает временно проживать в Польше (обычно выдаётся на 1–2 года). Нужны основания: работа, бизнес, учёба, брак и т.д. ВНЖ продлевается при сохранении оснований и является шагом к ПМЖ и гражданству.
-              </p>
-            </details>
-            <details class="qa">
-              <summary>Какие основания для получения ВНЖ?</summary>
-              <p class="qa__a">
-                Среди распространённых: трудоустройство (umowa o pracę, zlecenie и др.), ведение бизнеса, учёба в Польше, брак с гражданином Польши или с обладателем ВНЖ/ПМЖ, воссоединение семьи, особые случаи (спорт, наука, культура).
-              </p>
-            </details>
-            <details class="qa">
-              <summary>Что такое постоянный вид на жительство (ПМЖ)?</summary>
-              <p class="qa__a">
-                Разрешение на постоянное проживание без необходимости регулярно подтверждать основания. Часто получают после 5 лет непрерывного ВНЖ (срок учёбы засчитывается как половина). Возможен путь через польское происхождение. После 3 лет ПМЖ можно ходатайствовать о гражданстве.
-              </p>
-            </details>
-            <details class="qa">
-              <summary>Где и как оформляется вид на жительство?</summary>
-              <p class="qa__a">
-                В отделе по делам иностранцев воеводского управления по месту проживания. Документы заполняются и подаются на польском языке; переводы — только через присяжного переводчика.
-              </p>
-            </details>
-            <details class="qa">
-              <summary>Как долго длится процедура?</summary>
-              <p class="qa__a">
-                Обычно от нескольких недель до нескольких месяцев в зависимости от типа разрешения и воеводства. Подать документы нужно до окончания срока действия текущей визы или пребывания.
-              </p>
-            </details>
+            </div>
+          </div>
+          <div class="pp-faq" data-pp-faq>
+            <!-- Вопросы об услугах Pobyt Polska -->
+            <div class="pp-faq__divider"><span class="pp-faq__divider-label">Вопросы об услугах Pobyt Polska</span></div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Какие документы нужны для получения ВНЖ/ПМЖ/гражданства?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Зависит от основания подачи: работа, бизнес, учёба, воссоединение семьи, польские корни — у каждого свой пакет документов.</p>
+                <p>Напишите нам: разберёмся в вашей ситуации и составим точный список под ваш случай.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Сколько времени займёт весь процесс?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Сроки рассмотрения зависят от воеводства — в Варшаве, Кракове и Вроцлаве они разные и меняются.</p>
+                <p>Напишите нам: сориентируем по реальным срокам именно в вашем городе на текущий момент.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Как происходит оплата и какие дополнительные расходы меня ждут?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Оплата в два этапа: 50% при подписании договора, 50% при подаче документов и сдаче биометрии.</p>
+                <p>Дополнительно оплачиваются: гербовые сборы (государственные, не нам), фото на документы и присяжные переводы — если нужны. Всё это мы озвучиваем заранее, до начала работы.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Помогаете ли вы с получением Карты Поляка?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Да. Сопровождаем весь процесс — от проверки оснований до получения карты на руки.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Мне пришёл отказ. Что можно сделать?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Пришлите нам отказное решение. Изучим причины, оценим шансы на положительный результат и определим план действий — апелляция, повторная подача или другое основание.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Проводите ли вы консультации?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Да. Консультируем как перед началом сотрудничества, так и отдельно — если нужен разбор конкретной ситуации без оформления полного пакета.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Какие гарантии, что я получу положительный результат?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>В договоре закреплена работа до положительного результата. Ведём дело от подачи до получения документов — без дополнительных оплат, если потребуются повторные действия с нашей стороны.</p>
+              </div>
+            </div>
+
+            <!-- ─── БЛОК 1 ─── -->
+            <div class="pp-faq__divider"><span class="pp-faq__divider-label">Статус · CUKR · MOS</span></div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Что изменилось для украинцев с 5 марта 2026 года?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>С 5 марта 2026 года Польша формально завершила действие временной защиты (ochrona czasowa) по национальному законодательству. При этом директива ЕС продлена до 4 марта 2027 года — Польша обязана её соблюдать, поэтому фактически украинцы получили дополнительное время для урегулирования статуса.</p>
+                <p>PESEL UKR сам по себе больше не даёт права на пребывание. Чтобы оставаться в Польше легально, необходимо выбрать один из путей:</p>
+                <ul>
+                  <li>подать заявление на карту CUKR;</li>
+                  <li>оформить обычную карту побыта: по работе, бизнесу, учёбе или воссоединению семьи.</li>
+                </ul>
+                <p>Тем, кто ещё не подал заявление: автоматически нелегалом вы не становитесь, однако статус необходимо урегулировать как можно скорее — промедление создаёт риски при последующих обращениях.</p>
+                <details class="pp-faq__sources"><summary class="pp-faq__sources-sum">Источники</summary><div class="pp-faq__sources-body"><a class="pp-faq__src" href="https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20260000203" rel="noopener noreferrer" target="_blank">Ustawa wygaszająca 23.01.2026</a>
+                  <a class="pp-faq__src" href="https://migrant.wsc.mazowieckie.pl" rel="noopener noreferrer" target="_blank">WSC Mazowieckie</a>
+                  <a class="pp-faq__src" href="https://www.gov.pl/web/udsc" rel="noopener noreferrer" target="_blank">udsc.gov.pl</a></div></details>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Что такое карта CUKR и кто может её получить?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>CUKR (Czasowe Uprawnienie Karty Rezydenta) — карта временного вида на жительство для граждан Украины, выдаётся на 3 года. Подать заявление можно с <strong>4 мая 2026 года</strong> через портал MOS.</p>
+                <p>Условия получения:</p>
+                <ul>
+                  <li>гражданство Украины (или члены семьи гражданина Украины с PESEL UKR);</li>
+                  <li>активный статус UKR на 4 июня 2025 года и на дату подачи;</li>
+                  <li>непрерывный статус UKR не менее 365 дней до даты подачи;</li>
+                  <li>действующий загранпаспорт с полными данными в реестре PESEL UKR.</li>
+                </ul>
+                <p>CUKR даёт полный доступ к рынку труда без уведомления работодателем, право вести бизнес наравне с гражданами Польши, поездки по Шенгену до 90 дней в каждые 180 дней. Период проживания по CUKR засчитывается в стаж для долгосрочного резидента ЕС.</p>
+                <div class="pp-faq__warn">С получением CUKR статус UKR аннулируется — часть льгот (например, 800+) нужно переоформить. При выезде более чем на 6 месяцев разрешение аннулируется. Об изменении адреса нужно уведомлять воеводу в течение 15 рабочих дней.</div>
+                <details class="pp-faq__sources"><summary class="pp-faq__sources-sum">Источники</summary><div class="pp-faq__sources-body"><a class="pp-faq__src" href="https://wsc.gdansk.uw.gov.pl/pl/cukr-faq" rel="noopener noreferrer" target="_blank">CUKR FAQ — WSC Гданьск</a>
+                  <a class="pp-faq__src" href="https://zielonalinia.gov.pl/zmiany-w-ustawie-o-cudzoziemcach/" rel="noopener noreferrer" target="_blank">Zielona Linia</a></div></details>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Как подать заявление на карту побыта через систему MOS?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>MOS (Moduł Obsługi Spraw) — государственный портал для подачи заявлений на все виды карт побыта. С <strong>27 апреля 2026 года</strong> подача исключительно электронная — бумажные заявления больше не принимаются.</p>
+                <p>Порядок подачи:</p>
+                <ul>
+                  <li>Зарегистрируйте новый аккаунт на портале MOS (даже если старый аккаунт есть — нужен новый).</li>
+                  <li>Войдите через <a href="https://login.gov.pl" rel="noopener noreferrer" target="_blank">login.gov.pl</a> и заполните форму.</li>
+                  <li>Подпишите электронно: Profil Zaufany, квалифицированная ЭЦП или podpis osobisty.</li>
+                  <li>Прикрепите сканы документов, оплатите сборы онлайн (340–640 зл. + 100 зл. за карту).</li>
+                  <li>Переписка с уркадом — через систему e-Doręczenia.</li>
+                </ul>
+                <p>Profil Zaufany подтверждается через интернет-банк (PKO, mBank, ING и др.) или отделение ZUS. Заявление нельзя подать через представителя — только лично.</p>
+                <div class="pp-faq__note">Заявление на карту CUKR через MOS принимается с 4 мая 2026 года.</div>
+                <details class="pp-faq__sources"><summary class="pp-faq__sources-sum">Источники</summary><div class="pp-faq__sources-body"><a class="pp-faq__src" href="https://www.mos.cudzoziemcy.gov.pl/" rel="noopener noreferrer" target="_blank">mos.cudzoziemcy.gov.pl</a>
+                  <a class="pp-faq__src" href="https://www.gov.pl/web/udsc/info-mos2" rel="noopener noreferrer" target="_blank">УДСЦ — информация о MOS</a></div></details>
+              </div>
+            </div>
+            
+            <!-- ─── БЛОК 2 ─── -->
+            <div class="pp-faq__divider"><span class="pp-faq__divider-label">Сборы · Работа · Безопасность</span></div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Сколько стоит подача на карту побыта в 2026 году?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Размер гербового сбора зависит от основания:</p>
+                <table class="pp-faq__fee-table">
+                  <tr><td>Побыт часовы (без работы)</td><td>340 зл.</td></tr>
+                  <tr><td>Единое разрешение побыт + работа</td><td>440 зл.</td></tr>
+                  <tr><td>ПМЖ или долгосрочный резидент ЕС</td><td>640 зл.</td></tr>
+                  <tr><td>Изготовление карты (отдельно)</td><td>100 зл.</td></tr>
+                </table>
+                <p>Итого: от 440 до 740 злотых. Оплата — онлайн при подаче через MOS. Дети до 16 лет освобождены от платы за карту (100 зл.).</p>
+                <div class="pp-faq__warn">С 5 марта 2026 года сбор не возвращается в случае отказа или прекращения производства.</div>
+                <details class="pp-faq__sources"><summary class="pp-faq__sources-sum">Источники</summary><div class="pp-faq__sources-body"><a class="pp-faq__src" href="https://www.gov.pl/web/udsc/oplaty" rel="noopener noreferrer" target="_blank">УДСЦ — таблица сборов</a></div></details>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Могу ли я работать с картой CUKR или нужно отдельное разрешение?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Да. Карта CUKR даёт полный доступ к рынку труда без отдельного разрешения и без обязанности работодателя уведомлять уржад пшацы. Это принципиальное отличие от статуса UKR, при котором уведомление было обязательным.</p>
+                <p>Обычная карта побыта «по работе» (zezwolenie na pobyt i pracę) привязана к конкретному работодателю, указанному в разрешении. Смена работодателя требует подачи нового заявления.</p>
+                <p>С декабря 2025 года работодатели обязаны регистрировать трудоустройство иностранцев через <a href="https://praca.gov.pl" rel="noopener noreferrer" target="_blank">praca.gov.pl</a>.</p>
+                <p>Работа без оформления, по туристической визе или у работодателя, не указанного в документах — нарушение закона, которое может повлечь депортацию и запрет на въезд в ЕС.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">За что могут депортировать из Польши в 2026 году?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Основные основания для выдворения:</p>
+                <ul>
+                  <li>Нелегальное пребывание — истёкшая виза или карта без действующего zaświadczenia или красного штампа.</li>
+                  <li>Работа без разрешения, по туристической визе или у работодателя не из документов.</li>
+                  <li>Отказ предъявить документы при проверке.</li>
+                  <li>Уголовные правонарушения.</li>
+                </ul>
+                <p>При действующем заявлении на продление (подано вовремя, без формальных недостатков) пребывание считается легальным — подтверждением служит штамп или электронное zaświadczenie.</p>
+                <p>Запрет на въезд в ЕС — как правило, до 3 лет, при уголовных нарушениях дольше.</p>
+                <div class="pp-faq__warn">Получили уведомление о начале процедуры выдворения — обратитесь к юристу немедленно. Сроки на обжалование короткие.</div>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Что такое «красный штамп» и чем его заменили в 2026 году?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>«Красный штамп» (czerwona pieczątka) — физическая отметка в паспорте, подтверждающая принятие заявления и легализующая пребывание в Польше до вынесения решения.</p>
+                <div class="pp-faq__warn">С 27 апреля 2026 года физический штамп в паспорт больше не ставится. Вместо него — электронное zaświadczenie, которое выдаётся после проверки заявления и личного визита в воеводское управление для сдачи биометрии. Документ скачивается из MOS.</div>
+                <p>zaświadczenie не является въездным документом для других стран Шенгена — только подтверждает легальность пребывания в Польше. Для работодателя служит доказательством легальности трудоустройства.</p>
+                <p>После подачи система выдаёт UPO (уведомление о получении). Само zaświadczenie — только после верификации и биометрии в уряде.</p>
+                <details class="pp-faq__sources"><summary class="pp-faq__sources-sum">Источники</summary><div class="pp-faq__sources-body"><a class="pp-faq__src" href="https://www.ey.com/pl_pl/insights/workforce/mos-2-co-oznacza-dla-firm-zatrudniajacych-cudzoziemcow" rel="noopener noreferrer" target="_blank">EY — MOS 2.0 и замена штампа</a></div></details>
+              </div>
+            </div>
+            
+            <!-- ─── БЛОК 3 ─── -->
+            <div class="pp-faq__divider"><span class="pp-faq__divider-label">Язык · Работа · Бизнес · Семья · ПМЖ</span></div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Нужно ли знать польский язык для получения карты побыта?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Зависит от основания. Для карты CUKR, единого разрешения на работу и большинства видов побыта часового — знание польского не требуется.</p>
+                <p>Для ПМЖ и долгосрочного резидента ЕС — обязателен сертификат уровня B1 или выше.</p>
+                <p>С 1 июля 2025 года свидетельства об окончании польской полицеальной школы не принимаются. Сертификаты, полученные до 30 июня 2025 года, действительны до 30 июня 2026 года.</p>
+                <p>Записаться на государственный экзамен: <a href="https://portal.certyfikatpolski.pl" rel="noopener noreferrer" target="_blank">portal.certyfikatpolski.pl</a></p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Как получить карту побыта по работе (не украинцам)?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Основной инструмент — единое разрешение на побыт и работу (zezwolenie na pobyt czasowy i pracę). Заявление подаёт сам иностранец через MOS; работодатель подписывает załącznik nr 1.</p>
+                <ul>
+                  <li>Тест рынка труда (informacja starosty) упразднён с 2026 года.</li>
+                  <li>Минимальная зарплата в 2026 году — 4 806 злотых брутто. Заявления с меньшей суммой отклоняются.</li>
+                  <li>Гербовый сбор — 440 зл. + 100 зл. за карту.</li>
+                </ul>
+                <p>Упрощённая декларация (oświadczenie o powierzeniu pracy) доступна только для граждан Украины, Армении, Беларуси и Молдовы — на срок до 24 месяцев.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Можно ли получить ВНЖ через открытие бизнеса?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Да. Два основных пути:</p>
+                <ul>
+                  <li><strong>JDG (działalność gospodarcza)</strong> — регистрация в CEIDG, карта побыта до 3 лет. Подходит для фрилансеров, консультантов, специалистов.</li>
+                  <li><strong>Sp. z o.o.</strong> — минимальный капитал 5 000 злотых. Карта как учредителю или директору.</li>
+                </ul>
+                <p>Требования: реальная экономическая деятельность, стабильный доход не ниже прожиточного минимума, уплата налогов и взносов ZUS.</p>
+                <p>Бизнес «только для карты» без реальной деятельности — основание для отказа и запрета на въезд. Уряды проверяют фактическую деятельность. Подача — через MOS.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Как перевезти семью в Польшу (воссоединение семьи)?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Воссоединение семьи (łączenie rodzin) доступно тем, кто уже имеет карту побыта или иной легальный статус в Польше. Можно перевезти супруга/супругу, несовершеннолетних детей (включая усыновлённых).</p>
+                <ul>
+                  <li>ВНЖ не менее 2 лет — для большинства оснований. По работе или бизнесу — с первого дня.</li>
+                  <li>Достаточный доход на всех членов семьи.</li>
+                  <li>Наличие жилья и медицинская страховка.</li>
+                </ul>
+                <p>Карта по воссоединению даёт право на работу без отдельного разрешения. Украинцы со статусом UKR или CUKR — упрощённый порядок. Подача — через MOS.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Когда и как можно получить ПМЖ в Польше?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Постоянный вид на жительство (zezwolenie na pobyt stały) — после 5 лет непрерывного легального пребывания в Польше.</p>
+                <ul>
+                  <li>5 лет легального пребывания с соблюдением требований по типу ВНЖ.</li>
+                  <li>Сертификат польского языка уровня B1 и выше.</li>
+                  <li>Стабильный источник дохода.</li>
+                  <li>Отсутствие судимостей.</li>
+                </ul>
+                <p>Для супругов граждан Польши — срок сокращён до 3 лет совместного проживания в браке. ПМЖ выдаётся бессрочно, карта — на 10 лет с последующим переоформлением без повторного рассмотрения статуса.</p>
+                <p>Статус долгосрочного резидента ЕС (pobyt rezydenta długoterminowego UE) — аналогичные условия, дополнительно даёт право жить и работать в других странах ЕС.</p>
+              </div>
+            </div>
+            
+            <!-- ─── БЛОК 4 ─── -->
+            <div class="pp-faq__divider"><span class="pp-faq__divider-label">Выезды · PESEL · Медицина · Документы</span></div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Могу ли я выезжать из Польши с картой побыта или CUKR?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p><strong>С обычной картой побыта:</strong> свободный въезд/выезд по Шенгену. Длительное отсутствие (более 6 месяцев подряд или 10 месяцев суммарно за 5 лет) прерывает непрерывность проживания — критично для тех, кто планирует ПМЖ.</p>
+                <p><strong>С картой CUKR:</strong> отсутствие более 6 месяцев — автоматическая аннуляция разрешения.</p>
+                <p><strong>За пределы Шенгена</strong> (включая Украину): нужен действующий загранпаспорт. Карта побыта не даёт права въезда в третьи страны.</p>
+                <p><strong>Возврат в Польшу</strong> при наличии только штампа/zaświadczenia (без карты): въезд возможен только при наличии действующей визы или иного основания — сам штамп не является въездным документом.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Как оформить PESEL в Польше иностранцу?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>PESEL — польский идентификационный номер, необходимый для работы, открытия счёта, медицины и большинства официальных процедур.</p>
+                <ul>
+                  <li>Зарегистрируйтесь по месту проживания (zameldowanie) в гмине — PESEL выдаётся автоматически.</li>
+                  <li>Либо подайте заявление отдельно при наличии основания для пребывания.</li>
+                </ul>
+                <p>PESEL UKR выдавался украинцам с временной защитой и действует как обычный PESEL.</p>
+                <div class="pp-faq__note">Без PESEL невозможно создать Profil Zaufany, а без него — нельзя подать заявление через MOS. PESEL — первый шаг для любого мигранта в Польше.</div>
+              </div>
+            </div>
+            
+            <!-- ─── БЛОК 5 ─── -->
+            <div class="pp-faq__divider"><span class="pp-faq__divider-label">Медицина · Документы · Просрочка · Учёба · Пособия · Юрпомощь</span></div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Как получить медицинскую страховку (NFZ) мигранту?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <ul>
+                  <li>Работа по umowa o pracę или umowa zlecenie — взносы в ZUS платит работодатель.</li>
+                  <li>Самозанятость (JDG) — самостоятельная уплата взносов.</li>
+                  <li>Регистрация как безработного в Urzędzie Pracy — страховку покрывает Fundusz Pracy.</li>
+                </ul>
+                <p>Для членов семьи: супруга и дети работника могут быть застрахованы через него без дополнительной платы.</p>
+                <p>Если ни один из вариантов не подходит — добровольная страховка через NFZ. В I квартале 2026 года стоимость около 830 злотых в месяц (меняется ежеквартально).</p>
+                <p>После марта 2026 года украинцы с истёкшим статусом UKR переведены на общий режим — доступ к NFZ только при наличии действующего основания.</p>
+                <details class="pp-faq__sources"><summary class="pp-faq__sources-sum">Источники</summary><div class="pp-faq__sources-body"><a class="pp-faq__src" href="https://www.nfz.gov.pl" rel="noopener noreferrer" target="_blank">nfz.gov.pl</a></div></details>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Как перевести документы — нужен ли присяжный переводчик?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Для большинства официальных процедур требуется присяжный перевод (tłumaczenie przysięgłe). Обязательно для: свидетельств о рождении и браке, дипломов и аттестатов, судебных документов, трудовых книжек.</p>
+                <p>Переводчик должен быть в реестре Министерства юстиции: <a href="https://ms.gov.pl" rel="noopener noreferrer" target="_blank">ms.gov.pl</a>. Стоимость: от 50 до 150 злотых за страницу.</p>
+                <p>Нотариально заверенные переводы, выполненные за пределами Польши, как правило, не принимаются. Исключение: многоязычные документы ЕС по установленным формам могут не требовать дополнительного перевода.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Что делать, если истёк срок карты побыта или визы?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p><strong>Успели подать до истечения срока:</strong> пребывание автоматически легально до вынесения решения. Подтверждение — электронное zaświadczenie (с 27 апреля 2026 года) или красный штамп (для поданных до этой даты).</p>
+                <p><strong>Не успели подать:</strong> пребывание нелегально. Обратитесь в воеводское управление лично. В ряде случаев возможно добровольное урегулирование без депортации.</p>
+                <p><strong>Задержаны с просроченными документами:</strong> риск депортации и запрета на въезд в ЕС. Немедленно к юристу.</p>
+                <div class="pp-faq__note">Подавайте заявление на продление за 2–3 месяца до истечения срока. Телефон Straż Graniczna: +48 47 721 75 75</div>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Можно ли учиться в Польше и получить карту побыта студента?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p>Да. Студенческая карта побыта выдаётся на срок обучения плюс 1 год. Условия: зачисление в польский вуз, подтверждение от университета, средства для проживания (ориентировочно 710–776 злотых в месяц).</p>
+                <p>Работа разрешена без дополнительных ограничений. Иностранные студенты без обязательного страхования могут оформить добровольное страхование в NFZ по льготной ставке — около 55,80 злотых в месяц (I квартал 2026 года).</p>
+                <p>После окончания обучения можно перейти на рабочий ВНЖ без выезда из Польши — при условии своевременной подачи заявления. Подача — через MOS.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Можно ли получить пособие по безработице или социальную помощь?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <p><strong>Пособие по безработице</strong> — при наличии карты побыта, регистрации в Urzędzie Pracy и стажа не менее 365 дней за последние 18 месяцев с уплатой взносов на Fundusz Pracy.</p>
+                <p>Размер в 2026 году (до 1 июня): от 1 254 до 1 880 злотых нетто в первые 90 дней — зависит от стажа. С 1 июня ставки повышаются.</p>
+                <p><strong>Социальная помощь</strong> — при доходе ниже порога и регистрации по месту проживания. Обратитесь в местный OPS (Ośrodek Pomocy Społecznej).</p>
+                <p>После марта 2026 года пособие 800+ для украинцев сохраняется только при официальном трудоустройстве и обучении ребёнка в польском учреждении.</p>
+              </div>
+            </div>
+            
+            <div class="pp-faq__item" data-faq-item>
+              <button type="button" class="pp-faq__head" aria-expanded="false">
+                <span class="pp-faq__question">Где получить бесплатную юридическую помощь по вопросам легализации?</span>
+                <svg class="pp-faq__arrow" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg>
+              </button>
+              <div class="pp-faq__panel" hidden>
+                <ul>
+                  <li><a href="https://www.udsc.gov.pl" rel="noopener noreferrer" target="_blank">udsc.gov.pl</a> — Управление по делам иностранцев: FAQ на нескольких языках.</li>
+                  <li><a href="https://www.rpo.gov.pl" rel="noopener noreferrer" target="_blank">rpo.gov.pl</a> — Омбудсмен: жалобы на действия должностных лиц.</li>
+                  <li><a href="https://www.interwencjaprawna.pl" rel="noopener noreferrer" target="_blank">interwencjaprawna.pl</a> — специализируется на миграционном праве.</li>
+                  <li>Caritas Polska, PCK, Fundacja Ocalenie — юридические консультации для мигрантов.</li>
+                </ul>
+                <p>Горячая линия МВД: <a href="tel:800121212">800 121 212</a> (бесплатно, на нескольких языках).</p>
+                <p>Ресурсы на русском и украинском: <a href="https://oficjalny.pl" rel="noopener noreferrer" target="_blank">oficjalny.pl</a>, <a href="https://one-plus.pl" rel="noopener noreferrer" target="_blank">one-plus.pl</a></p>
+              </div>
+            </div>
+            
           </div>
         </div>
       </section>
-
       <section class="section section--alt" id="contacts">
         <div class="container">
           <div class="section__head">
-            <h2>О нас</h2>
-            <p class="muted">Знаем эту работу изнутри — и делаем её честно</p>
+            <h2 class="section__title">О нас</h2>
+            <p class="section__subtitle muted">Знаем эту работу изнутри — и делаем её честно</p>
           </div>
 
           <div class="contacts">
-            <div class="contacts__card contacts__about card about-card">
+            <div class="contacts__card contacts__about card card--elevated">
               <div class="about-photo-wrap about-photo-wrap--portrait">
                 <img
                   class="about-photo"
@@ -558,13 +1024,37 @@
                     <span>WhatsApp</span>
                   </a>
                 </li>
+                <li>
+                  <a
+                    class="about-contact about-contact--viber"
+                    href="viber://chat?number=%2B48733060361"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span class="about-contact__icon" aria-hidden="true">Vb</span>
+                    <span>Viber</span>
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div class="contacts__side">
-              <div class="quote-block">
-                <span class="quote-mark">&ldquo;</span>
-                <p class="quote-text">
+              <div class="card card--quote" style="position: relative; padding-top: 3rem;">
+                <span
+                  aria-hidden="true"
+                  style="
+                    position: absolute;
+                    top: 0.7rem;
+                    left: 1.25rem;
+                    font-size: 68px;
+                    line-height: 1;
+                    color: rgba(255, 255, 255, 0.34);
+                    font-style: italic;
+                    pointer-events: none;
+                  "
+                  >“</span
+                >
+                <p class="quote-text" style="position: relative; z-index: 1;">
                   Разбираемся в вашей ситуации, собираем документы и ведём дело от первой консультации до получения карты.
                 </p>
                 <p class="quote-attr">— Дарья K.</p>
@@ -591,12 +1081,12 @@
                 />
                 <div class="grid grid--2">
                   <label class="field">
-                    <span>Имя</span>
-                    <input name="name" autocomplete="name" required placeholder="Ваше имя" />
+                    <span class="field__label">Имя</span>
+                    <input class="field__control" name="name" autocomplete="name" required placeholder="Ваше имя" />
                   </label>
                   <label class="field">
-                    <span>Телефон</span>
-                    <input
+                    <span class="field__label">Телефон</span>
+                    <input class="field__control"
                       type="tel"
                       id="phone-contacts"
                       name="phone"
@@ -611,24 +1101,24 @@
                   </label>
                 </div>
 
-                <div class="field field--contact-pref">
-                  <span>Как с вами связаться?</span>
-                  <div class="contact-pref" role="radiogroup" aria-label="Как с вами связаться">
-                    <label class="contact-pref__opt">
-                      <input type="radio" name="contact_pref" value="phone" checked />
-                      <span>Телефон</span>
-                    </label>
-                    <label class="contact-pref__opt">
-                      <input type="radio" name="contact_pref" value="messenger" />
-                      <span>Мессенджер</span>
-                    </label>
-                  </div>
-                </div>
+                <fieldset class="field field--contact-pref radio-group" role="radiogroup" aria-label="Как с вами связаться">
+                  <span class="field__label">Как с вами связаться?</span>
+                  <label class="radio">
+                    <input class="radio__input" type="radio" name="contact_pref" value="phone" checked />
+                    <span class="radio__indicator" aria-hidden="true"></span>
+                    <span class="radio__label">Телефон</span>
+                  </label>
+                  <label class="radio">
+                    <input class="radio__input" type="radio" name="contact_pref" value="messenger" />
+                    <span class="radio__indicator" aria-hidden="true"></span>
+                    <span class="radio__label">Мессенджер</span>
+                  </label>
+                </fieldset>
 
                 <label class="field">
-                  <span>Город</span>
+                  <span class="field__label">Город</span>
                   <div class="field-select">
-                    <select name="city" required aria-label="Город">
+                    <select class="field__control field__control--select" name="city" required aria-label="Город">
                       <option value="" selected>Выберите город</option>
                       <option value="Варшава">Варшава</option>
                       <option value="Краков">Краков</option>
@@ -647,8 +1137,8 @@
                   </div>
                 </label>
                 <label class="field">
-                  <span>Сообщение</span>
-                  <textarea
+                  <span class="field__label">Сообщение</span>
+                  <textarea class="field__control field__control--textarea"
                     name="message"
                     rows="4"
                     placeholder="Коротко опишите ситуацию: основание, сроки, воеводство…"
@@ -716,7 +1206,7 @@
       <section class="section" id="map">
         <div class="container">
           <div class="section__head">
-            <h2>Как нас найти</h2>
+            <h2 class="section__title">Как нас найти</h2>
             <p class="muted">Мы отмечены на карте гугл</p>
           </div>
           <div class="map" data-map-wrapper>
@@ -773,7 +1263,7 @@
         <div class="footer__links">
           <a href="#services">Услуги</a>
           <a href="#faq">FAQ</a>
-          <button class="linklike" type="button" data-open-policy>Политика данных</button>
+          <button class="linklike" type="button" data-open="policy-modal">Политика данных</button>
         </div>
       </div>
       <div class="container footer__bottom fineprint muted">
@@ -782,56 +1272,116 @@
     </footer>
 
     <div class="floaters" aria-label="Быстрые контакты">
-      <a
-        class="floater floater--tg"
-        href="https://t.me/Daria_Kaszczej"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Написать в Telegram"
-        title="Telegram"
+      <button
+        class="floater floater--write"
+        type="button"
+        data-dropdown-toggle
+        data-contact-toggle
+        aria-label="Открыть мессенджеры"
+        aria-expanded="false"
+        aria-controls="floaterContactMenu"
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path
-            d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z"
-          />
-        </svg>
-      </a>
-      <a
-        class="floater floater--wa"
-        href="https://api.whatsapp.com/send?phone=48733060361"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Написать в WhatsApp"
-        title="WhatsApp"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path
-            d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z"
+            d="M4 5.5C4 4.67 4.67 4 5.5 4h13c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5H10l-4.5 4v-4H5.5C4.67 16 4 15.33 4 14.5v-9Z"
             fill="none"
             stroke="currentColor"
-            stroke-width="1.5"
-          />
-          <path
-            d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           />
         </svg>
-      </a>
-    </div>
-
-    <div class="svc-overlay" id="svc-overlay" onclick="svcHandleOverlay(event)">
-      <div class="svc-modal" id="svc-modal">
-        <button type="button" class="svc-modal__close" onclick="svcCloseModal()" aria-label="Закрыть">
-          ✕
-        </button>
-        <div id="svc-modal-content"></div>
+      </button>
+      <div class="dropdown dropdown--floater" data-dropdown>
+      <div class="dropdown__menu" id="floaterContactMenu" data-contact-menu role="menu" hidden>
+        <a
+          class="floater floater--tg"
+          href="https://t.me/Daria_Kaszczej"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Написать в Telegram"
+          title="Telegram"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z" />
+          </svg>
+        </a>
+        <a
+          class="floater floater--wa"
+          href="https://api.whatsapp.com/send?phone=48733060361"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Написать в WhatsApp"
+          title="WhatsApp"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <path d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z" />
+          </svg>
+        </a>
+        <a
+          class="floater floater--viber"
+          href="viber://chat?number=%2B48733060361"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Написать в Viber"
+          title="Viber"
+        >
+          <span aria-hidden="true">Vb</span>
+        </a>
       </div>
     </div>
 
-    <dialog class="modal" data-modal>
+    <dialog class="modal" id="svc-modal" aria-labelledby="svc-modal-title">
+      <div class="svc-modal">
+        <h2 class="visually-hidden" id="svc-modal-title">Детали услуги</h2>
+        <button type="button" class="btn btn--icon svc-modal__close" data-modal-close aria-label="Закрыть">✕</button>
+        <div id="svc-modal-content"></div>
+      </div>
+    </dialog>
+
+    <dialog class="modal modal--wide" id="all-services-modal" aria-labelledby="all-services-modal-title">
+      <div class="svc-modal svc-modal--all">
+        <button type="button" class="btn btn--icon svc-modal__close" data-modal-close aria-label="Закрыть">✕</button>
+        <h2 class="svc-modal__title" id="all-services-modal-title">Все услуги</h2>
+        <div class="svc-modal__sub">Полный список направлений, с которыми мы работаем.</div>
+        <div class="svc-all-list" id="svc-all-list"></div>
+        <div class="svc-all-callout">
+          <div class="svc-all-callout__text">
+            <strong>Не нашли свою ситуацию в списке?</strong>
+            <span class="muted">Напишите кратко, что у вас за кейс — подскажем, как мы можем помочь, и следующий шаг.</span>
+          </div>
+          <button class="btn btn--primary" data-open="lead-modal" data-open-lead="services">Записаться</button>
+        </div>
+      </div>
+    </dialog>
+
+    <template id="tpl-svc-row">
+      <div class="svc-modal__inc-row">
+        <div class="svc-modal__inc-check" aria-hidden="true">
+          <svg viewBox="0 0 10 8" fill="none" width="9" height="9">
+            <path d="M1 4l2.5 2.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="svc-modal__inc-text"></div>
+      </div>
+    </template>
+
+    <template id="tpl-svc-all-item">
+      <div class="svc-all-list__item">
+        <div class="svc-all-list__title-wrap">
+          <span class="svc-all-list__dot" aria-hidden="true"></span>
+          <span class="svc-all-list__title"></span>
+        </div>
+        <button type="button" class="btn btn--primary svc-all-list__btn" data-svc-key>Что входит и цена</button>
+      </div>
+    </template>
+
+    <dialog class="modal" data-modal id="lead-modal" aria-labelledby="lead-modal-title">
       <div class="modal__card" data-modal-card>
         <div class="modal__head">
-          <h2>Бесплатная консультация</h2>
-          <button class="iconbtn" type="button" data-close-modal aria-label="Закрыть">✕</button>
+          <h2 id="lead-modal-title">Бесплатная консультация</h2>
+          <button class="iconbtn" type="button" data-modal-close aria-label="Закрыть">✕</button>
         </div>
         <p class="muted">
           Заполните форму — мы свяжемся и подскажем дальнейшие шаги
@@ -849,12 +1399,12 @@
             title=""
           />
           <label class="field">
-            <span>Имя</span>
-            <input name="name" autocomplete="name" required />
+            <span class="field__label">Имя</span>
+            <input class="field__control" name="name" autocomplete="name" required />
           </label>
           <label class="field">
-            <span>Телефон</span>
-            <input
+            <span class="field__label">Телефон</span>
+            <input class="field__control"
               type="tel"
               id="phone-modal"
               name="phone"
@@ -867,24 +1417,24 @@
             />
           </label>
 
-          <div class="field field--contact-pref">
-            <span>Как с вами связаться?</span>
-            <div class="contact-pref" role="radiogroup" aria-label="Как с вами связаться">
-              <label class="contact-pref__opt">
-                <input type="radio" name="contact_pref" value="phone" checked />
-                <span>Телефон</span>
-              </label>
-              <label class="contact-pref__opt">
-                <input type="radio" name="contact_pref" value="messenger" />
-                <span>Мессенджер</span>
-              </label>
-            </div>
-          </div>
+          <fieldset class="field field--contact-pref radio-group" role="radiogroup" aria-label="Как с вами связаться">
+            <span class="field__label">Как с вами связаться?</span>
+            <label class="radio">
+              <input class="radio__input" type="radio" name="contact_pref" value="phone" checked />
+              <span class="radio__indicator" aria-hidden="true"></span>
+              <span class="radio__label">Телефон</span>
+            </label>
+            <label class="radio">
+              <input class="radio__input" type="radio" name="contact_pref" value="messenger" />
+              <span class="radio__indicator" aria-hidden="true"></span>
+              <span class="radio__label">Мессенджер</span>
+            </label>
+          </fieldset>
 
           <label class="field">
-            <span>Город</span>
+            <span class="field__label">Город</span>
             <div class="field-select">
-              <select name="city" required aria-label="Город">
+              <select class="field__control field__control--select" name="city" required aria-label="Город">
                 <option value="" selected>Выберите город</option>
                 <option value="Варшава">Варшава</option>
                 <option value="Краков">Краков</option>
@@ -903,8 +1453,8 @@
             </div>
           </label>
           <label class="field">
-            <span>Вопрос</span>
-            <textarea name="message" rows="4"></textarea>
+            <span class="field__label">Вопрос</span>
+            <textarea class="field__control field__control--textarea" name="message" rows="4"></textarea>
           </label>
           <button class="btn btn--primary btn--block" type="submit">
             Отправить
@@ -917,10 +1467,10 @@
       </div>
     </dialog>
 
-    <dialog class="modal" data-policy>
+    <dialog class="modal" data-policy id="policy-modal" aria-labelledby="policy-modal-title">
       <form class="modal__card" method="dialog">
         <div class="modal__head">
-          <h2>Обработка персональных данных</h2>
+          <h2 id="policy-modal-title">Обработка персональных данных</h2>
           <button class="iconbtn" value="cancel" aria-label="Закрыть">✕</button>
         </div>
         <div class="muted policy">
@@ -954,6 +1504,7 @@
         </div>
       </div>
     </div>
+    <div class="toast-stack" aria-live="polite" aria-atomic="true"></div>
 
     <!-- без атрибута hidden: часть браузеров хуже обрабатывает target формы в скрытом iframe -->
     <iframe
@@ -963,8 +1514,6 @@
       style="position:absolute;width:0;height:0;border:0;clip:rect(0,0,0,0);visibility:hidden"
       aria-hidden="true"
     ></iframe>
-    <script type="module" src="./main.js"></script>
-    <script src="./pobyt-quiz-embed.js?v=2" defer></script>
-    <script src="./services-modal.js?v=11" defer></script>
+    <script type="module" src="./js/main.js?v=3"></script>
   </body>
 </html>
