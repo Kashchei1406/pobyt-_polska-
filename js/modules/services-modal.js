@@ -1,4 +1,4 @@
-import { FAMILY_PRICES, SERVICE_ORDER, SERVICES } from '../config/services.config.js';
+import { FAMILY_PRICES, SERVICE_ORDER, SERVICES } from '../config/services.config.js?v=2';
 
 let currentFamily = '2+1';
 let currentServiceKey = null;

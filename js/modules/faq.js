@@ -1,13 +1,24 @@
 import { $, $$ } from '../shared/dom.js';
 import { setDropdownOpen } from './dropdowns.js';
 
+function ensurePanelInner(panel) {
+  if (!panel) return null;
+  let inner = panel.querySelector('.pp-faq__panel-inner');
+  if (inner) return inner;
+  inner = document.createElement('div');
+  inner.className = 'pp-faq__panel-inner';
+  while (panel.firstChild) inner.appendChild(panel.firstChild);
+  panel.appendChild(inner);
+  return inner;
+}
+
 function closePpFaqItem(item) {
   if (!item) return;
   const btn = item.querySelector('.pp-faq__head');
   const panel = item.querySelector('.pp-faq__panel');
   item.classList.remove('pp-faq__item--open');
   if (btn) btn.setAttribute('aria-expanded', 'false');
-  if (panel) panel.setAttribute('hidden', '');
+  if (panel) panel.setAttribute('aria-hidden', 'true');
 }
 
 function openPpFaqItem(item) {
@@ -16,7 +27,7 @@ function openPpFaqItem(item) {
   const panel = item.querySelector('.pp-faq__panel');
   item.classList.add('pp-faq__item--open');
   if (btn) btn.setAttribute('aria-expanded', 'true');
-  if (panel) panel.removeAttribute('hidden');
+  if (panel) panel.setAttribute('aria-hidden', 'false');
 }
 
 /** FAQ: один открытый пункт, клавиатура — нативно на <button> */
@@ -28,6 +39,9 @@ export function initPpFaq() {
     const btn = $('.pp-faq__head', item);
     const panel = $('.pp-faq__panel', item);
     if (!btn || !panel) return;
+    ensurePanelInner(panel);
+    panel.removeAttribute('hidden');
+    panel.setAttribute('aria-hidden', item.classList.contains('pp-faq__item--open') ? 'false' : 'true');
     const bid = `pp-faq-btn-${i + 1}`;
     const pid = `pp-faq-panel-${i + 1}`;
     btn.id = bid;

@@ -43,6 +43,23 @@
   padding: 7px var(--space-3);
 }
 
+.dropdown--header .dropdown__menu {
+  top: calc(100% + var(--space-8));
+  min-width: 0;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dropdown--header .dropdown__menu .about-contact {
+  width: auto;
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+.dropdown--header .dropdown__menu .about-contact__icon {
+  flex-shrink: 0;
+}
+
 .dropdown--floater .dropdown__menu {
   display: flex;
   flex-direction: column;

@@ -61,6 +61,16 @@ function contactPrefLabel_(pref) {
   return pref === 'messenger' ? 'Мессенджер' : 'Телефон';
 }
 
+function normalizeContactMethod_(v) {
+  var s = String(v || '').trim().toLowerCase();
+  if (s === 'telegram') return 'Telegram';
+  if (s === 'whatsapp') return 'WhatsApp';
+  if (s === 'viber') return 'Viber';
+  if (s === 'мессенджер') return 'Мессенджер';
+  if (s === 'телефон' || s === 'phone') return 'Телефон';
+  return '';
+}
+
 function parseFormBody(contents) {
   var params = {};
   if (!contents || typeof contents !== 'string') return params;
@@ -78,6 +88,7 @@ function doPost(e) {
   try {
     var name = '', phone = '', city = '', message = '', source = 'site';
     var contact_pref = 'phone';
+    var contact_method = '';
 
     if (e.parameter && (e.parameter.name || e.parameter.phone)) {
       name = (e.parameter.name || '').trim();
@@ -86,6 +97,7 @@ function doPost(e) {
       message = (e.parameter.message || '').trim();
       source = (e.parameter.source || 'site').trim();
       contact_pref = normalizeContactPref_(e.parameter.contact_pref);
+      contact_method = normalizeContactMethod_(e.parameter.contact_method);
     } else if (e.postData && e.postData.contents) {
       var raw = e.postData.contents;
       if (raw.indexOf('=') !== -1 && raw.indexOf('{') !== 0) {
@@ -96,6 +108,7 @@ function doPost(e) {
         message = (p.message || '').trim();
         source = (p.source || 'site').trim();
         contact_pref = normalizeContactPref_(p.contact_pref);
+        contact_method = normalizeContactMethod_(p.contact_method);
       } else {
         var data = JSON.parse(raw);
         name = (data.name || '').trim();
@@ -104,7 +117,12 @@ function doPost(e) {
         message = (data.message || '').trim();
         source = (data.source || 'site').trim();
         contact_pref = normalizeContactPref_(data.contact_pref);
+        contact_method = normalizeContactMethod_(data.contact_method);
       }
+    }
+
+    if (!contact_method) {
+      contact_method = contactPrefLabel_(contact_pref);
     }
 
     if (!name || !phone) {
@@ -123,7 +141,7 @@ function doPost(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    var row = [new Date(), name, phone, city, message, source, contactPrefLabel_(contact_pref)];
+    var row = [new Date(), name, phone, city, message, source, contact_method];
     var spreadsheet = SpreadsheetApp.openById(SHEET_ID);
     var sheet = spreadsheet.getSheetByName(SHEET_NAME);
     if (!sheet) {
@@ -140,7 +158,7 @@ function doPost(e) {
         '',
         '👤 Имя: ' + name,
         '📞 Телефон: ' + phone,
-        '📱 Связь: ' + contactPrefLabel_(contact_pref),
+        '📱 Связь: ' + contact_method,
         '🏙 Город: ' + (city || '—'),
         '💬 Вопрос: ' + (message || '—'),
         '📍 Источник: ' + source,

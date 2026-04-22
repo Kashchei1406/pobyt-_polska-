@@ -104,6 +104,186 @@
   margin: 0;
 }
 
+.field--contact-pref.radio-group {
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-4);
+  line-height: 1;
+}
+
+.field--contact-pref .field__label {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-sm);
+  line-height: 1;
+  margin: 0;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.field--contact-pref .radio {
+  align-items: center;
+  line-height: 1;
+}
+
+.field--contact-pref .radio__label {
+  line-height: 1;
+}
+
+.field--messenger-picker {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  gap: var(--space-2);
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    max-height var(--dur-3) var(--ease-in-out),
+    opacity var(--dur-3) var(--ease-in-out),
+    transform var(--dur-3) var(--ease-in-out),
+    margin-top var(--dur-3) var(--ease-in-out),
+    visibility 0s linear var(--dur-3);
+}
+
+.field--messenger-picker.is-open {
+  max-height: 140px;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  margin-top: var(--space-1);
+  overflow: visible;
+  transition:
+    max-height var(--dur-3) var(--ease-in-out),
+    opacity var(--dur-3) var(--ease-in-out),
+    transform var(--dur-3) var(--ease-in-out),
+    margin-top var(--dur-3) var(--ease-in-out),
+    visibility 0s linear 0s;
+}
+
+.field--contact-pref:has(input[name='contact_pref'][value='messenger']:checked) + .field--messenger-picker {
+  max-height: 140px;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  margin-top: var(--space-1);
+  overflow: visible;
+  transition:
+    max-height var(--dur-3) var(--ease-in-out),
+    opacity var(--dur-3) var(--ease-in-out),
+    transform var(--dur-3) var(--ease-in-out),
+    margin-top var(--dur-3) var(--ease-in-out),
+    visibility 0s linear 0s;
+}
+
+.messenger-picker__options {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: var(--space-2);
+}
+
+.messenger-option {
+  flex: 1 1 0;
+  cursor: pointer;
+}
+
+.messenger-option__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.messenger-option__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(var(--gray-900-rgb) / 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  font: var(--fw-600) var(--fs-sm) / 1 var(--font-ui);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+.messenger-option__icon {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.messenger-option__icon svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.messenger-option--tg .messenger-option__chip {
+  color: #0b6ca5;
+  background: rgba(0, 136, 204, 0.08);
+  border-color: rgba(0, 136, 204, 0.24);
+}
+
+.messenger-option--tg .messenger-option__icon {
+  color: #fff;
+  background: #229ed9;
+}
+
+.messenger-option--wa .messenger-option__chip {
+  color: #137b46;
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.24);
+}
+
+.messenger-option--wa .messenger-option__icon {
+  color: #fff;
+  background: #25d366;
+}
+
+.messenger-option--viber .messenger-option__chip {
+  color: #5742b7;
+  background: rgba(115, 96, 242, 0.08);
+  border-color: rgba(115, 96, 242, 0.24);
+}
+
+.messenger-option--viber .messenger-option__icon {
+  color: #fff;
+  background: #7360f2;
+  font-size: 10px;
+  font-weight: var(--fw-800);
+}
+
+.messenger-option__input:checked + .messenger-option__chip {
+  color: rgba(var(--pp-red-rgb) / 0.98);
+  background: rgba(var(--pp-red-rgb) / 0.08);
+  border-color: rgba(var(--pp-red-rgb) / 0.52);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--pp-red-rgb) / 0.34),
+    0 2px 8px rgba(var(--pp-red-rgb) / 0.16);
+  transform: translateY(-1px);
+}
+
+.messenger-option__input:checked + .messenger-option__chip .messenger-option__icon {
+  background: rgba(var(--pp-red-rgb) / 0.95);
+  color: #fff;
+}
+
+.messenger-option__input:focus-visible + .messenger-option__chip {
+  box-shadow: var(--ring-focus);
+}
+
 .radio {
   display: inline-flex;
   align-items: center;

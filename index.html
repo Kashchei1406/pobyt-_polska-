@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="./assets/pobyt-polska-favicon.svg" />
     <link rel="stylesheet" href="styles/01-tokens.css" />
     <link rel="stylesheet" href="./assets/faq-fonts.css?v=1" />
-    <link rel="stylesheet" href="./styles.css?v=form-label-dark-v3" />
+    <link rel="stylesheet" href="./styles.css?v=about-quote-fix-v1" />
     <link rel="stylesheet" href="./styles/components/quiz.css?v=10" />
     <!-- URL для отправки заявок: таблица + Telegram (см. README). -->
     <script>window.FORM_SUBMIT_URL = 'https://script.google.com/macros/s/AKfycbxADieL_vl8Etj9w_d_HY6zwcmjZ3uU2oe8oxzhIVqXVEvVrF-2SQGJxyuehZKg7H7A/exec';</script>
@@ -44,7 +44,7 @@
           <a href="#process">Как работаем</a>
           <a href="#faq">FAQ</a>
           <a href="#reviews">Отзывы</a>
-          <a href="#contacts">Контакты</a>
+          <a href="#about">О нас</a>
           <a href="#map">Как нас найти</a>
         </nav>
 
@@ -107,7 +107,7 @@
           <a href="#services" data-mobile-link>Услуги</a>
           <a href="#process" data-mobile-link>Как работаем</a>
           <a href="#faq" data-mobile-link>FAQ</a>
-          <a href="#contacts" data-mobile-link>Контакты</a>
+          <a href="#about" data-mobile-link>О нас</a>
           <a href="#map" data-mobile-link>Как нас найти</a>
           <div class="mobile__actions">
             <a class="btn btn--ghost" href="tel:+48733060361">Позвонить</a>
@@ -239,6 +239,42 @@
                   </label>
                 </fieldset>
 
+                <fieldset class="field field--messenger-picker" data-messenger-picker aria-hidden="true">
+                  <span class="field__label visually-hidden">Выберите мессенджер</span>
+                  <div class="messenger-picker__options" role="radiogroup" aria-label="Выберите мессенджер">
+                    <label class="messenger-option messenger-option--tg">
+                      <input class="messenger-option__input" type="radio" name="messenger_channel" value="telegram" />
+                      <span class="messenger-option__chip">
+                        <span class="messenger-option__icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z" />
+                          </svg>
+                        </span>
+                        <span>Telegram</span>
+                      </span>
+                    </label>
+                    <label class="messenger-option messenger-option--wa">
+                      <input class="messenger-option__input" type="radio" name="messenger_channel" value="whatsapp" />
+                      <span class="messenger-option__chip">
+                        <span class="messenger-option__icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                            <path d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z"></path>
+                          </svg>
+                        </span>
+                        <span>WhatsApp</span>
+                      </span>
+                    </label>
+                    <label class="messenger-option messenger-option--viber">
+                      <input class="messenger-option__input" type="radio" name="messenger_channel" value="viber" />
+                      <span class="messenger-option__chip">
+                        <span class="messenger-option__icon" aria-hidden="true">Vb</span>
+                        <span>Viber</span>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+
                 <label class="field">
                   <span class="field__label">Город</span>
                   <div class="field-select">
@@ -325,7 +361,7 @@
 
           <div class="grid grid--3">
             <article class="card card--service">
-              <h3>ВНЖ / карта побыту</h3>
+              <h3>ВНЖ / карта побыту / CUKR</h3>
               <p class="muted">
                 Первая карта или продление статуса — разберём основание, соберём документы и сопроводим до результата.
               </p>
@@ -334,9 +370,10 @@
               </button>
             </article>
             <article class="card card--service">
-              <h3>ПМЖ / резидент ЕС</h3>
+              <h3>ПМЖ / резидент ЕС / Гражданство</h3>
               <p class="muted">
-                Проверим стаж и доходы, найдём возможные проблемы до подачи и подготовим полный пакет.
+                Проверим стаж и доходы, найдём возможные проблемы до подачи и подготовим полный пакет. По услуге
+                «Гражданство» отдельно помогаем с получением довода особистего и паспорта.
               </p>
               <button type="button" class="btn btn--primary btn--block" data-service="pmj">
                 <span>Что входит и цена</span><span aria-hidden="true">→</span>
@@ -928,7 +965,7 @@
           </div>
         </div>
       </section>
-      <section class="section section--alt" id="contacts">
+      <section class="section section--alt" id="about">
         <div class="container">
           <div class="section__head">
             <h2 class="section__title">О нас</h2>
@@ -983,7 +1020,7 @@
                   <span class="about-stat__t">клиентов</span>
                 </div>
                 <div class="about-stat">
-                  <span class="about-stat__n">5 лет</span>
+                  <span class="about-stat__n">5+ лет</span>
                   <span class="about-stat__t">практики</span>
                 </div>
               </div>
@@ -992,7 +1029,7 @@
                 <li>
                   <a class="about-contact about-contact--phone" href="tel:+48733060361">
                     <span class="about-contact__icon" aria-hidden="true">📞</span>
-                    <span>+48 733 060 361</span>
+                    <span>Позвонить</span>
                   </a>
                 </li>
                 <li>
@@ -1113,6 +1150,42 @@
                     <span class="radio__indicator" aria-hidden="true"></span>
                     <span class="radio__label">Мессенджер</span>
                   </label>
+                </fieldset>
+
+                <fieldset class="field field--messenger-picker" data-messenger-picker aria-hidden="true">
+                  <span class="field__label visually-hidden">Выберите мессенджер</span>
+                  <div class="messenger-picker__options" role="radiogroup" aria-label="Выберите мессенджер">
+                    <label class="messenger-option messenger-option--tg">
+                      <input class="messenger-option__input" type="radio" name="messenger_channel" value="telegram" />
+                      <span class="messenger-option__chip">
+                        <span class="messenger-option__icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z" />
+                          </svg>
+                        </span>
+                        <span>Telegram</span>
+                      </span>
+                    </label>
+                    <label class="messenger-option messenger-option--wa">
+                      <input class="messenger-option__input" type="radio" name="messenger_channel" value="whatsapp" />
+                      <span class="messenger-option__chip">
+                        <span class="messenger-option__icon" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                            <path d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z"></path>
+                          </svg>
+                        </span>
+                        <span>WhatsApp</span>
+                      </span>
+                    </label>
+                    <label class="messenger-option messenger-option--viber">
+                      <input class="messenger-option__input" type="radio" name="messenger_channel" value="viber" />
+                      <span class="messenger-option__chip">
+                        <span class="messenger-option__icon" aria-hidden="true">Vb</span>
+                        <span>Viber</span>
+                      </span>
+                    </label>
+                  </div>
                 </fieldset>
 
                 <label class="field">
@@ -1431,6 +1504,42 @@
             </label>
           </fieldset>
 
+          <fieldset class="field field--messenger-picker" data-messenger-picker aria-hidden="true">
+            <span class="field__label visually-hidden">Выберите мессенджер</span>
+            <div class="messenger-picker__options" role="radiogroup" aria-label="Выберите мессенджер">
+              <label class="messenger-option messenger-option--tg">
+                <input class="messenger-option__input" type="radio" name="messenger_channel" value="telegram" />
+                <span class="messenger-option__chip">
+                  <span class="messenger-option__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M9.3 15.4 9.1 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.6l2.6-12.3c.3-1.1-.4-1.6-1.2-1.3L3.4 9.5c-1.1.4-1.1 1.1-.2 1.4l4 1.3 9.3-5.9c.4-.3.8-.1.5.2l-7.7 7z" />
+                    </svg>
+                  </span>
+                  <span>Telegram</span>
+                </span>
+              </label>
+              <label class="messenger-option messenger-option--wa">
+                <input class="messenger-option__input" type="radio" name="messenger_channel" value="whatsapp" />
+                <span class="messenger-option__chip">
+                  <span class="messenger-option__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M20.5 12.1c0 4.7-3.8 8.4-8.4 8.4-1.4 0-2.8-.3-4.1-1l-4.5 1.2 1.2-4.3c-.8-1.4-1.2-2.9-1.2-4.6C3.5 7.4 7.3 3.7 11.9 3.7c4.7 0 8.6 3.7 8.6 8.4z" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                      <path d="M10 8.7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.9 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.6.2l-.6.7c-.2.2-.3.2-.6.1-.3-.1-1.1-.4-2.1-1.2-.8-.7-1.3-1.5-1.4-1.8-.1-.3 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5L10 8.7z"></path>
+                    </svg>
+                  </span>
+                  <span>WhatsApp</span>
+                </span>
+              </label>
+              <label class="messenger-option messenger-option--viber">
+                <input class="messenger-option__input" type="radio" name="messenger_channel" value="viber" />
+                <span class="messenger-option__chip">
+                  <span class="messenger-option__icon" aria-hidden="true">Vb</span>
+                  <span>Viber</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
           <label class="field">
             <span class="field__label">Город</span>
             <div class="field-select">
@@ -1514,6 +1623,6 @@
       style="position:absolute;width:0;height:0;border:0;clip:rect(0,0,0,0);visibility:hidden"
       aria-hidden="true"
     ></iframe>
-    <script type="module" src="./js/main.js?v=5"></script>
+    <script type="module" src="./js/main.js?v=25"></script>
   </body>
 </html>

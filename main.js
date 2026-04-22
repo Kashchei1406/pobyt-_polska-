@@ -3,13 +3,14 @@ import { storage } from './js/shared/storage.js';
 import { initDropdowns } from './js/modules/dropdowns.js';
 import { initLeadModalBridge, initModals as initModalController } from './js/modules/modal.js';
 import { initPpFaq, initPpFaqSearch } from './js/modules/faq.js';
-import { initMobileMenu } from './js/modules/header.js';
+import { initMobileMenu } from './js/modules/header.js?v=5';
 import { initThemeToggle } from './js/modules/theme.js';
 import { initContactPrefRadios, initForms, submitToGoogleWebApp } from './js/modules/forms.js';
 import { initCityAutofill, initCitySelectAppearance } from './js/modules/city-autofill.js';
 import { initReviews } from './js/modules/reviews.js';
 import { MSG } from './js/config/messages.js';
 import { initQuiz } from './js/modules/quiz.js';
+import { initServicesModals } from './js/modules/services-modal.js?v=4';
 
 function setYear() {
   const el = $('[data-year]');
@@ -129,6 +130,7 @@ setYear();
 initMobileMenu();
 initThemeToggle();
 initDropdowns();
+initServicesModals();
 initModalController();
 initLeadModalBridge();
 initPpFaq();

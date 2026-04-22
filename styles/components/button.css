@@ -28,6 +28,9 @@
     box-shadow var(--t-normal),
     transform var(--t-fast),
     filter var(--t-fast);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .btn:hover {
@@ -129,4 +132,118 @@
 
 .btn--pill {
   --btn-radius: var(--radius-full);
+}
+
+.btn--success .btn__label {
+  display: inline-flex;
+  transition:
+    opacity var(--t-fast),
+    transform var(--t-fast);
+}
+
+.btn--success .btn__check {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.3) rotate(-30deg);
+  transition:
+    opacity var(--t-fast),
+    transform var(--t-spring);
+  pointer-events: none;
+}
+
+.btn--success.is-done {
+  --btn-bg: linear-gradient(180deg, #10b981 0%, #059669 100%);
+  --btn-shadow: 0 10px 26px rgba(16 185 129 / 0.35);
+}
+
+.btn--success.is-done .btn__label {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.btn--success.is-done .btn__check {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+.btn--success.is-done:hover,
+.btn--success.is-done:active {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border-color: var(--btn-border);
+  box-shadow: var(--btn-shadow);
+  transform: translateY(0);
+  filter: none;
+}
+
+.btn--loading.is-loading {
+  pointer-events: none;
+  transform: translateY(0);
+  filter: none;
+}
+
+.btn--loading.is-loading .btn__label {
+  opacity: 0;
+}
+
+.btn--loading.is-loading:hover,
+.btn--loading.is-loading:active {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border-color: var(--btn-border);
+  box-shadow: var(--btn-shadow);
+  transform: translateY(0);
+  filter: none;
+}
+
+.btn--loading.is-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255 255 255 / 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn--shake.is-error {
+  box-shadow:
+    0 0 0 3px rgba(220 38 38 / 0.22),
+    var(--shadow-sm);
+  animation: btn-shake 0.45s var(--ease-out);
+}
+
+@keyframes btn-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
 }
